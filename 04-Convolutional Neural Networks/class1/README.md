@@ -11,7 +11,7 @@
 - 图片分类（Image Classification）；
 ![Image Classification](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/blob/master/04-Convolutional%20Neural%20Networks/class1/md_images/01.png)
 - 目标检测（Object detection）；
-![Image Classification](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/blob/master/04-Convolutional%20Neural%20Networks/class1/md_images/02.png）
+![Image Classification](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/blob/master/04-Convolutional%20Neural%20Networks/class1/md_images/02.png)
 - 神经风格转换（Neural Style Transfer）
 ![Image Classification](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/blob/master/04-Convolutional%20Neural%20Networks/class1/md_images/03.png)
 
@@ -25,30 +25,30 @@
 
 卷积运算是卷积神经网络最基本的组成部分，使用边缘检测作为入门样例，来理解卷积是如何进行运算的，根据实验表明，神经网络的前几层是负责如何检测边缘的，然后，后面的层有可能负责检测到物体的部分区域，更靠后的一些层可能负责检测到完整的物体，这个例子中就是人脸。
 
-![Image Classification](04)
+![Image Classification](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/blob/master/04-Convolutional%20Neural%20Networks/class1/md_images/04.png)
 
 #### 边缘检测示例
 
 图片最常做的边缘检测有两类：垂直边缘（Vertical Edges）检测和水平边缘（Horizontal Edges）检测。
 
-![Image Classification](05)
+![Image Classification](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/blob/master/04-Convolutional%20Neural%20Networks/class1/md_images/05.png)
 
 比如上图，图中的栏杆（红色线条）就是属于垂直边缘的范畴，同样的行人的轮廓线（红色线条）也可以理解为垂线，这些先调试垂直边缘检测器的输出，同样，当你想检测水平边缘的时候，图中的栏杆（绿色线条）就是很明显的水平线。
 
 图片的边缘检测可以通过与相应的过滤器进行卷积实现，以垂直边缘检测为例，原始图像是一个 6×6 的灰度图像，因为是灰度图像，所以它是 6×6×1 的矩阵，而不是 6×6×3 的，因为没有 RGB 三通道。为了检测图像中的垂直边缘，现在构造一个 3×3 矩阵。在通用习惯中，在卷积神经网络的术语中，它被称为过滤器（filter），当然有些论文把它叫做“核”。
 
-![Image Classification](06)
+![Image Classification](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/blob/master/04-Convolutional%20Neural%20Networks/class1/md_images/06.png)
 
 卷积运算的求解过程是从左到右，由上到下，每次在原始图片矩阵中取与滤波器同等大小的一部分，每一部分中的值与滤波器中的值对应相乘后求和，将结果组成一个矩阵。就如上图所示：原始图片尺寸为 6x6，过滤器尺寸为 3x3，卷积后得到的图片尺寸为 4x4，得到结果如最右边矩阵（数值表示灰度，以左上角和右下角的值为例）。
 下图同样对应一个垂直边缘的例子：
 
-![Image Classification](07)
+![Image Classification](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/blob/master/04-Convolutional%20Neural%20Networks/class1/md_images/07.png)
 
 如果将最右边的矩阵当作图像，那么中间一段亮一些的区域对应最左边的图像中间的垂直边缘。
 
 这是一个动态演示的例子：
 
-![Image Classification](08)
+![Image Classification](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/blob/master/04-Convolutional%20Neural%20Networks/class1/md_images/08.jpg)
 
  图中的 `*` 表示卷积运算符号。在计算机中这个符号表示一般的乘法，而在不同的深度学习框架中，卷积操作的 API 定义可能不同：
 
@@ -59,7 +59,7 @@
 **为什么这个过滤器可以用做边缘检测呢？**
 这是一个简单的 6×6 图像，左边的一半是 10，右边一般是 0。它当成一个图片，左边那部分看起来是白色的，像素值 10 是比较亮的像素值，右边像素值比较暗，使用灰色来表示 0。图片里，有一个特别明显的垂直边缘在图像中间，这条垂直线是从黑到白的过渡线，或者从白色到深色。而3x3 的过滤器就像中间的那副图显示的那样，然后进行卷积运算，得到右边的矩阵。在中间有段亮一点的区域，对应检查到这个 6×6 图像中间的垂直边缘。
 
-![Image Classification](09)
+![Image Classification](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/blob/master/04-Convolutional%20Neural%20Networks/class1/md_images/09.jpg)
 
 #### 更多边缘检测的内容
 
@@ -67,19 +67,19 @@
 
 这张 6×6 的图片，左边较亮，而右边较暗，将它与垂直边缘检测滤波器进行卷积，检测结果就显示在了右边这幅图的中间部分。
 
-![Image Classification](07)
+![Image Classification](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/blob/master/04-Convolutional%20Neural%20Networks/class1/md_images/07.png)
 
 而这幅图它的颜色被翻转了，变成了左边比较暗，而右边比较亮。如果用相同的过滤器进行卷积，就变成下面图片的样子。中间的过渡部分被翻转，之前的 30 翻转成了-30，表明是由暗向亮过渡，而不是由亮向暗过渡。
 
-![Image Classification](09)
+![Image Classification](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/blob/master/04-Convolutional%20Neural%20Networks/class1/md_images/09.jpg)
 
 垂直边缘检测和水平边缘检测的滤波器如下所示：
 
-![Image Classification](10)
+![Image Classification](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/blob/master/04-Convolutional%20Neural%20Networks/class1/md_images/10.png)
 
 其他常用的过滤器有叫做Sobel的过滤器和叫做Scharr的过滤器：
 
-![Image Classification](11)
+![Image Classification](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/blob/master/04-Convolutional%20Neural%20Networks/class1/md_images/11.png)
 
 其实在真正的应用中这些 **过滤器的数字正是需要网络学习的参数 w** 。相比这种单纯的垂直边缘和水平边缘，它可以检测出 45°或 70°或 73°，甚至是任何角度的边缘。
 
@@ -92,11 +92,11 @@
 - 每次卷积运算后，输出图片的尺寸缩小，图像在每次识别边缘或其他特征时都缩小是不好的现象
 - 如下图：像素点（绿色阴影标记）只被一个输出所触碰或者使用，因为它位于这个 3×3 的区域的一角。但如果是在中间的像素点，比如这个（红色方框标记），就会有许多 3×3 的区域与之重叠。所以那些在角落或者边缘区域的像素点在输出中采用较少，意味着你丢掉了图像边缘位置的许多信息。
 
-![Image Classification](12)
+![Image Classification](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/blob/master/04-Convolutional%20Neural%20Networks/class1/md_images/12.png)
 
 为了解决这些问题，可以在进行卷积操作前，对原始图片在边界上进行填充（Padding），以增加矩阵的大小。通常将 0 作为填充值。
 
-![Image Classification](13)
+![Image Classification](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/blob/master/04-Convolutional%20Neural%20Networks/class1/md_images/13.jpg)
 
 设每个方向扩展像素点数量为 $p$，则填充后原始图片的大小为 $(n+2p) \times (n+2p)$，过滤器大小保持 $f \times $不变，则输出图片大小为 $(n+2p-f+1) \times (n+2p-f+1)$。
 
@@ -113,7 +113,7 @@
 
 步长表示过滤器在原始图片的水平方向和垂直方向上每次移动的距离。之前，步长被默认为 1。而如果我们设置步长为 2，则卷积过程如下图所示：
 
-![Image Classification](14)
+![Image Classification](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/blob/master/04-Convolutional%20Neural%20Networks/class1/md_images/14.jpg)
 
 设步长为 $s$，填充长度为 $p$，输入图片大小为 $n \times n$，过滤器大小为 $f \times $，则卷积后图片的尺寸为：
 
