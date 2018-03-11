@@ -19,11 +19,11 @@ md_images | README.md内的图片源文件
 
 计算机视觉研究中的大量研究都集中在如何把这些基本构件组合起来，形成有效的卷积神经网络。最直观的方式之一就是去看一些案例，就像很多人通过看别人的代码来学习编程一样，通过研究别人构建有效组件的案例是个不错的办法。实际上在计算机视觉任务中表现良好的神经网络框架往往也适用于其它任务。也就是说，如果有人已经训练或者计算出擅长识别猫、狗、人的神经网络或者神经网络框架，而你的计算机视觉识别任务是构建一个自动驾驶汽车，你完全可以借鉴别人的神经网络框架来解决自己的问题。
 
-## 经典网络 
+## 经典网络
 
-### LeNet-5 
+### LeNet-5
 
-![](01)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/week2/md_images/01.png)
 
 从左往右看，随着网络越来越深，图像的高度和宽度在缩小，从最初的 32×32 缩小到 28×28，再到 14×14、10×10，最后只有 5×5。与此同时，随着网络层次的加深，通道数量一直在增加，从 1 增加到 6 个，再到 16 个。
 
@@ -40,7 +40,7 @@ md_images | README.md内的图片源文件
 
 ### AlexNet
 
-![](01)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/week2/md_images/02.png)
 
 特点：
 
@@ -51,7 +51,7 @@ md_images | README.md内的图片源文件
 
 ### VGG
 
-![](03)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/week2/md_images/03.png)
 
 特点：
 
@@ -70,11 +70,11 @@ md_images | README.md内的图片源文件
 
 ResNet是由残差块（Residual block）构成：
 
-![](04）
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/week2/md_images/04.jpg)
 
 **残差块（Residual block）**。通过**捷径（Short cut，或者称跳远连接，Skip connections）**可以将 $a^{[l]}$添加到第二个 ReLU 过程中，直接建立 $a^{[l]}$与 $a^{[l+2]}$之间的隔层联系。表达式如下：
 
-![](08)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/week2/md_images/08.jpg)
 
 - Linear：$$z^{[l+1]} = W^{[l+1]}a^{[l]} + b^{[l+1]}$$
 
@@ -86,21 +86,21 @@ ResNet是由残差块（Residual block）构成：
 
 构建一个残差网络就是将许多残差块堆积在一起，形成一个深度网络。
 
-![](05)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/week2/md_images/05.jpg)
 
 为了便于区分，在 ResNets 的论文[He et al., 2015. Deep residual networks for image recognition](https://arxiv.org/pdf/1512.03385.pdf)中，非残差网络被称为**普通网络（Plain Network）**。将它变为残差网络的方法是加上所有的跳远连接。
 
-![](06)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/week2/md_images/06.jpg)
 
 如果使用标准优化算法训练一个普通网络，比如说梯度下降法，或者其它热门的优化算法。如果没有残差，没有这些捷径或者跳跃连接，会发现随着网络深度的加深，训练错误会先减少，然后增多。但有了 ResNets 就不一样了，即使网络再深，训练的表现却不错，比如说训练误差减少，就算是训练深达 100 层的网络也不例外。
 
-![](07)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/week2/md_images/07.jpg)
 
 ## 为什么残差有用？
 
 假设有一个大型神经网络，其输入为 $X$，输出为 $a^{[l]}$。给这个神经网络额外增加两层，输出为 $a^{[l+2]}$。将这两层看作一个具有跳远连接的残差块。为了方便说明，假设整个网络中都选用 ReLU 作为激活函数，包括输入 X 的非零异常值,因此输出的所有激活值都大于等于 0。
 
-![](09)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/week2/md_images/09.jpg)
 
 则有
 
@@ -119,16 +119,12 @@ $$a^{[l+2]} = g(a^{[l]}) = ReLU(a^{[l]}) = a^{[l]}$$
 
 所以给大型神经网络增加两层，不论是把残差块添加到神经网络的中间还是末端位置，都不会影响网络的表现，残差网络起作用的主要原因就是这些残差块学习恒等函数非常容易，你能确定网络性能不会受到影响，很多时候甚至可以提高效率，或者说至少不会降低网络的效率，因此创建类似残差网络可以提升网络性能。
 
-通过使用same卷积，使得z^{[l+2]}和a^{[l]}具有相同的维度。但如果两者维度不一样，则需要额外引入矩阵 $W\_s$与 $a^{[l]}$相乘，使得二者的维度相匹配。参数矩阵 $W\_s$既可以通过模型训练得到，也可以作为固定值。
+通过使用same卷积，使得$z^{[l+2]}$和$a^{[l]}$具有相同的维度。但如果两者维度不一样，则需要额外引入矩阵 $W_s$与 $a^{[l]}$相乘，使得二者的维度相匹配。参数矩阵 $W_s$既可以通过模型训练得到，也可以作为固定值。
 
 下图展示了通过添加跳跃连接来将普通网络转化为残差网络。这个网络有很多层 3×3 卷积，而且它们大多都是 same 卷积，这就是添加等维特征向量的原因。所以这些都是卷积层，而不是全连接层，因为它们是 same 卷积，维度得以保留，这也解释了添加项$z^{[l+2]}+a^{[l]}$（维度相同所以能够相加)
 
-![](10)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/week2/md_images/10.png)
 
 普通网络和 ResNets 网络常用的结构是：卷积层-卷积层-卷积层-池化层-卷积层-卷积层-卷积层-池化层……依此重复。直到最后，有一个通过 softmax 进行预测的全连接层。
 
 ## 网络中的网络以及 1×1  卷积
-
-
-
-
