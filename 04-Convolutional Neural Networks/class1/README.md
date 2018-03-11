@@ -1,11 +1,11 @@
 <h1 align="center">第四课第一周“卷积神经网络”</h1>
 
-## 文件夹结构
+# 文件夹结构
 
 待定
 
-## 笔记
-### 计算机视觉
+# 笔记
+## 计算机视觉
 深度学习有两个令人兴奋的特点：
 1. 计算机视觉的高速发展标志着新型应用产生的可能，这是几年前，人们所不敢想象的。通过学习使用这些工具，你也许能够创造出新的产品和应用。
 2. 人们对于计算机视觉的研究富有想象力和创造力，由此衍生出新的神经网络结构与算法启发人们去创造出计算机视觉与其他领域的交叉成果。举个例子，语音识别经常从计算机视觉领域中寻找灵感。所以即使你在计算机视觉方面没有做出成果，我也希望你也可以将所学的知识应用到其他算法和结构。
@@ -31,13 +31,13 @@
 
 所以对于计算机视觉应用来说，通过卷积计算来处理蕴含着大量数据的图像。
 
-### 卷积运算
+## 卷积运算
 
 卷积运算是卷积神经网络最基本的组成部分，使用边缘检测作为入门样例，来理解卷积是如何进行运算的，根据实验表明，神经网络的前几层是负责如何检测边缘的，然后，后面的层有可能负责检测到物体的部分区域，更靠后的一些层可能负责检测到完整的物体，这个例子中就是人脸。
 
 ![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/class1/md_images/04.png)
 
-### 边缘检测示例
+## 边缘检测示例
 
 图片最常做的边缘检测有两类：垂直边缘（Vertical Edges）检测和水平边缘（Horizontal Edges）检测。
 
@@ -71,7 +71,7 @@
 
 ![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/class1/md_images/09.jpg)
 
-### 更多边缘检测的内容
+## 更多边缘检测的内容
 
 那如何区分正边和负边，这实际就是由亮到暗与由暗到亮的区别，也就是边缘的过渡。
 
@@ -93,7 +93,7 @@
 
 其实在真正的应用中这些 **过滤器的数字正是需要网络学习的参数 w** 。相比这种单纯的垂直边缘和水平边缘，它可以检测出 45°或 70°或 73°，甚至是任何角度的边缘。
 
-### padding
+## padding
 
 假设输入图片的大小为 $n \times n$，而滤波器的大小为 $f \times f$，则卷积后的输出图片大小为 $(n-f+1) \times (n-f+1)$。
 
@@ -108,7 +108,7 @@
 
 ![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/class1/md_images/13.jpg)
 
-设每个方向扩展像素点数量为 $p$，则填充后原始图片的大小为 $(n+2p) \times (n+2p)$，过滤器大小保持 $f \times $不变，则输出图片大小为 $(n+2p-f+1) \times (n+2p-f+1)$。
+设每个方向扩展像素点数量为 $p$，则填充后原始图片的大小为 $(n+2p) \times (n+2p)$，过滤器大小保持 $f \times f$不变，则输出图片大小为 $(n+2p-f+1) \times (n+2p-f+1)$。
 
 因此，在进行卷积运算时，我们有两种选择：
 
@@ -117,7 +117,7 @@
 
 在计算机视觉领域，$f$通常为奇数。原因包括 Same 卷积中 $p = \frac{f-1}{2}$能得到自然数结果，并且过滤器有一个便于表示其所在位置的中心点。
 
-### 卷积步长
+## 卷积步长
 
 卷积中，有时候需要通过padding来避免信息损失，有时候也需要通过设置 **步长（stride）** 来压缩信息。
 
@@ -134,7 +134,7 @@ $$ 图示蓝框完全包括在图像内部时，才对它进行运算。
 
 目前为止我们学习的“卷积”实际上被称为互相关（cross-correlation），而非数学意义上的卷积。真正的卷积操作在做元素乘积求和之前，要将滤波器沿水平和垂直轴翻转（相当于旋转 180 度）。因为这种翻转对一般为水平或垂直对称的滤波器影响不大，按照机器学习的惯例，我们通常不进行翻转操作，在简化代码的同时使神经网络能够正常工作。
 
-### 三维卷积
+## 三维卷积
 
 上述讨论均基于灰度图像，也就是二维矩阵，那么在彩色RGB图像上如何卷积呢？
 
@@ -157,7 +157,7 @@ $$ 图示蓝框完全包括在图像内部时，才对它进行运算。
 
 ![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/class1/md_images/17.jpg)
 
-### 单层卷积网络
+## 单层卷积网络
 
 与之前的卷积过程相比较，卷积神经网络的单层结构多了激活函数和偏移量；而与标准神经网络：
 $$Z^{[l]} = W^{[l]}A^{[l-1]}+b$$
@@ -196,7 +196,7 @@ $$n^{[l]}\_W = \biggl\lfloor \frac{n^{[l-1]}\_W+2p^{[l]}-f^{[l]}}{s^{[l]}}+1   \
 * **权重维度**：$f^{[l]} \times f^{[l]} \times n^{[l-1]}\_c \times n^{[l]}\_c$
 * **偏置维度**：$1 \times 1 \times 1 \times n^{[l]}\_c$
 
-### 简单神经网络示例
+## 简单神经网络示例
 
 ![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/class1/md_images/20.jpg)
 
@@ -215,7 +215,7 @@ $$n^{[l]}\_W = \biggl\lfloor \frac{n^{[l-1]}\_W+2p^{[l]}-f^{[l]}}{s^{[l]}}+1   \
 
 一个典型的卷积神经网络通常包含有三种层：**卷积层（Convolution layer）**、**池化层（Pooling layer）**、**全连接层（Fully Connected layer）**。仅用卷积层也有可能构建出很好的神经网络，但大部分神经网络还是会添加池化层和全连接层，它们更容易设计。
 
-### 池化层
+## 池化层
 
 卷积网络也经常使用池化层来缩减模型的大小，提高计算速度，同时提高所提取特征的鲁棒性。
 
@@ -263,7 +263,7 @@ $$\biggl\lfloor \frac{n\_H-f}{s}+1   \biggr\rfloor \times \biggl\lfloor \frac{n\
 - 常见模式就是一个或多个卷积后面跟随一个池化层，然后一个或多个卷积层后面再跟一个池化层，然后是几个全连接层，最后是一个 softmax。
     - Conv——Pool——Conv——Pool—— ……多个（Conv-Pool）… ——Fc——Fc——Fc——softmax。
 
-### 为什么使用卷积？
+## 为什么使用卷积？
 
 ** 和只用全连接层相比，卷积层的两个主要优势在于参数共享和稀疏连接。**
 
