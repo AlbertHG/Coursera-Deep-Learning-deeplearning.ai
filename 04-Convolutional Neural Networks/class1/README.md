@@ -1,11 +1,11 @@
 <h1 align="center">第四课第一周“卷积神经网络”</h1>
 
-## 文件夹结构
+# 文件夹结构
 
 待定
 
-## 笔记
-### 计算机视觉
+# 笔记
+## 计算机视觉
 深度学习有两个令人兴奋的特点：
 1. 计算机视觉的高速发展标志着新型应用产生的可能，这是几年前，人们所不敢想象的。通过学习使用这些工具，你也许能够创造出新的产品和应用。
 2. 人们对于计算机视觉的研究富有想象力和创造力，由此衍生出新的神经网络结构与算法启发人们去创造出计算机视觉与其他领域的交叉成果。举个例子，语音识别经常从计算机视觉领域中寻找灵感。所以即使你在计算机视觉方面没有做出成果，我也希望你也可以将所学的知识应用到其他算法和结构。
@@ -31,13 +31,13 @@
 
 所以对于计算机视觉应用来说，通过卷积计算来处理蕴含着大量数据的图像。
 
-### 卷积运算
+## 卷积运算
 
 卷积运算是卷积神经网络最基本的组成部分，使用边缘检测作为入门样例，来理解卷积是如何进行运算的，根据实验表明，神经网络的前几层是负责如何检测边缘的，然后，后面的层有可能负责检测到物体的部分区域，更靠后的一些层可能负责检测到完整的物体，这个例子中就是人脸。
 
 ![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/class1/md_images/04.png)
 
-### 边缘检测示例
+## 边缘检测示例
 
 图片最常做的边缘检测有两类：垂直边缘（Vertical Edges）检测和水平边缘（Horizontal Edges）检测。
 
@@ -71,7 +71,7 @@
 
 ![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/class1/md_images/09.jpg)
 
-### 更多边缘检测的内容
+## 更多边缘检测的内容
 
 那如何区分正边和负边，这实际就是由亮到暗与由暗到亮的区别，也就是边缘的过渡。
 
@@ -93,7 +93,7 @@
 
 其实在真正的应用中这些 **过滤器的数字正是需要网络学习的参数 w** 。相比这种单纯的垂直边缘和水平边缘，它可以检测出 45°或 70°或 73°，甚至是任何角度的边缘。
 
-### padding
+## padding
 
 假设输入图片的大小为 $n \times n$，而滤波器的大小为 $f \times f$，则卷积后的输出图片大小为 $(n-f+1) \times (n-f+1)$。
 
@@ -108,7 +108,7 @@
 
 ![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/class1/md_images/13.jpg)
 
-设每个方向扩展像素点数量为 $p$，则填充后原始图片的大小为 $(n+2p) \times (n+2p)$，过滤器大小保持 $f \times $不变，则输出图片大小为 $(n+2p-f+1) \times (n+2p-f+1)$。
+设每个方向扩展像素点数量为 $p$，则填充后原始图片的大小为 $(n+2p) \times (n+2p)$，过滤器大小保持 $f \times f$不变，则输出图片大小为 $(n+2p-f+1) \times (n+2p-f+1)$。
 
 因此，在进行卷积运算时，我们有两种选择：
 
@@ -117,7 +117,7 @@
 
 在计算机视觉领域，$f$通常为奇数。原因包括 Same 卷积中 $p = \frac{f-1}{2}$能得到自然数结果，并且过滤器有一个便于表示其所在位置的中心点。
 
-### 卷积步长
+## 卷积步长
 
 卷积中，有时候需要通过padding来避免信息损失，有时候也需要通过设置 **步长（stride）** 来压缩信息。
 
@@ -133,27 +133,14 @@ $$\biggl\lfloor \frac{n+2p-f}{s}+1 \biggr\rfloor \times \biggl\lfloor \frac{n+2p
 $$ 图示蓝框完全包括在图像内部时，才对它进行运算。
 
 目前为止我们学习的“卷积”实际上被称为互相关（cross-correlation），而非数学意义上的卷积。真正的卷积操作在做元素乘积求和之前，要将滤波器沿水平和垂直轴翻转（相当于旋转 180 度）。因为这种翻转对一般为水平或垂直对称的滤波器影响不大，按照机器学习的惯例，我们通常不进行翻转操作，在简化代码的同时使神经网络能够正常工作。
-<<<<<<< HEAD
-$a^{[0]}_H = a^{[0]}_W$
-#### 高维卷积
-则卷积后的输出图片尺寸为 $(n-f+1) \times (n-f+1) \times n'\_c $，$n'\_c$ 为过滤器组的个数。
-上述讨论均基于灰度图像，也就是二维矩阵，那么在彩色RGB图像上如何卷积呢？
-![$$\biggl\lfloor \frac{n+2p-f}{s}+1 \biggr\rfloor \times \biggl\lfloor \frac{n+2p-f}{s}+1 \biggr\rfloor$$]()
-\[\begin{bmatrix} 0&0 &0\\ 0&0 &0 \\ 0&0 &0 \end{bmatrix}\]
-- da
-    - 34
-$\frac{(n-f+1)}{s}+1$
 
-
-=======
-
-### 三维卷积
+## 三维卷积
 
 上述讨论均基于灰度图像，也就是二维矩阵，那么在彩色RGB图像上如何卷积呢？
 
 彩色图像如果是 6×6×3，这里的 3 指的是三个颜色通道，你可以把它想象成三个6×6 图像的堆叠。为了检测图像的边缘或者其他的特征，不是把它跟原来的 3×3 的过滤器做卷积，而是跟一个三维的过滤器，它的维度是 3×3×3，这样这个过滤器也有三层，对应红绿、蓝三个通道。
 
-![](15)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/class1/md_images/15.jpg)
 
 给这些命个名字（原图像），这里的第一个 6 代表图像高度，第二个 6 代表宽度，这个 3 代表通道的数目。同样你的过滤器也有一个高，宽和通道数，并且图像的通道数必须和过滤器的通道数匹配，所以这两个数（紫色方框标记的两个数）必须相等。
 
@@ -161,22 +148,22 @@ $\frac{(n-f+1)}{s}+1$
 
 如果要计算下一个输出，把这个立方体滑动一个单位，再与这 27 个数相乘，把它们都加起来，就得到了下一个输出，以此类推。
 
-![](16)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/class1/md_images/16.png)
 
-三个通道的过滤器可以实现针对某一个或者某几个通道的特征检测，比如如果你想检测图像红色通道的边缘，那么你可以将第一个过滤器设为 $$\[\begin{bmatrix}1&0&-1\\ 1&0&-1\\ 1&0&-1 \end{bmatrix}\]$$ ，和之前一样，而绿色通道全为 $$\[\begin{bmatrix} 0&0 &0\\ 0&0 &0 \\ 0&0 &0 \end{bmatrix}\]$$ ，蓝色也全为 0。如果你把这三个堆叠在一起形成一个 3×3×3 的过滤器，那么这就是一个检测垂直边界的过滤器，但只对红色通道有用。
+三个通道的过滤器可以实现针对某一个或者某几个通道的特征检测，比如如果你想检测图像红色通道的边缘，那么你可以将第一个过滤器设为 $\[\begin{bmatrix}1&0&-1\\ 1&0&-1\\ 1&0&-1 \end{bmatrix}\]$ ，和之前一样，而绿色通道全为 $\[\begin{bmatrix} 0&0 &0\\ 0&0 &0 \\ 0&0 &0 \end{bmatrix}\]$ ，蓝色也全为 0。如果你把这三个堆叠在一起形成一个 3×3×3 的过滤器，那么这就是一个检测垂直边界的过滤器，但只对红色通道有用。
 
 如果想同时检测多个特征，或者实现更多的边缘检测，可以增加更多的过滤器组，例如设置第一个过滤器组实现垂直边缘检测，第二个过滤器组实现水平边缘检测。
 设输入图片的尺寸为 $n \times n \times n_c$（$n_c$为通道数），过滤器尺寸为 $f \times f \times n_c$，则卷积后的输出图片尺寸为 $(n-f+1) \times (n-f+1) \times n'\_c $，$n'\_c$ 为过滤器组的个数。
 
-![](17)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/class1/md_images/17.jpg)
 
-### 单层卷积网络
+## 单层卷积网络
 
 与之前的卷积过程相比较，卷积神经网络的单层结构多了激活函数和偏移量；而与标准神经网络：
 $$Z^{[l]} = W^{[l]}A^{[l-1]}+b$$
 $$A^{[l]} = g^{[l]}(Z^{[l]})$$
 
-![](19)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/class1/md_images/19.jpg)
 
 相比，过滤器的数值对应着权重 $W^{[l]}$，卷积运算对应着 $W^{[l]}$与 $A^{[l-1]}$的乘积运算,每一个过滤器都有对应的一个偏差参数$b\_i$，所选的激活函数变为 ReLU。
 
@@ -209,43 +196,38 @@ $$n^{[l]}\_W = \biggl\lfloor \frac{n^{[l-1]}\_W+2p^{[l]}-f^{[l]}}{s^{[l]}}+1   \
 * **权重维度**：$f^{[l]} \times f^{[l]} \times n^{[l-1]}\_c \times n^{[l]}\_c$
 * **偏置维度**：$1 \times 1 \times 1 \times n^{[l]}\_c$
 
-### 简单神经网络示例
+## 简单神经网络示例
 
-![](20)
->>>>>>> 0d88f58fb0a218f206083d921b94cce432588c7e
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/class1/md_images/20.jpg)
 
 假设你有一张图片，你想做图片分类或图片识别，把这张图片输入定义为 x，然后辨别图片中有没有猫，用 0 或 1 表示，这是一个分类问题，我们来构建适用于这项任务的卷积神经网络。
+
 - 针对这个示例，使用一张 39x39x3 大小的图片，则第0层的维度$a^{[0]}$ 为 39x39x3 ，也就是 $a^{[0]}\_H = a^{[0]}\_W =39$, $n^{[0]}\_c = 3$。
     - 第0层使用 3x3 的过滤器来提取特征，那么 $f^{[1]} = 3$ 。步幅为1，$s^{[1]} = 1$。padding为3，$p^{[1]} = 3$，所以高度和宽度使用 same 卷积。如果有 10 个过滤器，神经网络下一层的激活值为 37×37×10，写 10 是因为用了 10 个过滤器。37是公式$\frac{(n-f+1)}{s}+1$ 的计算结果。，所以输出是 37x37 ，它是一个vaild卷积。
 - 则第1层的输入被标记为 $a^{[1]}$ 为 37x37x10 ，也就是 $a^{[1]}\_H = a^{[1]}\_W =37$, $n^{[1]}\_c = 10$。
-<<<<<<< HEAD
-        - 再经历一个卷积层，这层使用 5x5 的过滤器来提取特征，那么 $f^{[2]} = 5$ 。步幅为2，$s^{[2]} = 2$。padding为0，$p^{[2]} = 0$。有 20 个过滤器，该层的输出为 17×17×20（下一层的激活值）。
-=======
     - 再经历一个卷积层，这层使用 5x5 的过滤器来提取特征，那么 $f^{[2]} = 5$ 。步幅为2，$s^{[2]} = 2$。padding为0，$p^{[2]} = 0$。有 20 个过滤器，该层的输出为 17×17×20（下一层的激活值）。
->>>>>>> 0d88f58fb0a218f206083d921b94cce432588c7e
 - 第2层的输入被标记为 $a^{[2]}$ 为 17×17×20 ，也就是 $a^{[2]}\_H = a^{[1]}\_W =17$, $n^{[2]}\_c = 20$。
     - 这是最后一个卷积层，这层使用 5x5 的过滤器来提取特征，那么 $f^{[3]} = 5$ 。步幅为2，$s^{[3]} = 2$。padding为0，$p^{[3]} = 0$。有 40 个过滤器，该层的输出为 7×7×40（下一层的激活值）
+    
 到此，这张 39×39×3 的输入图像就处理完毕了，为图片提取了 7×7×40 个特征，即$a^{[3]}$的维度为 7x7x40，将 1960 个特征平滑展开成 1960 个单元的一列，然后连接最后一级的输出层。输出层可以是一个神经元，即二元分类（logistic）；也可以是多个神经元，即多元分类（softmax）。最后得到预测输出 $\hat y$。
 
 随着神经网络计算深度不断加深，图片的高度和宽度 $f^{[l]}$一般逐渐减小，而 $n^{[l]}\_c$在增加。
-<<<<<<< HEAD
-=======
 
 一个典型的卷积神经网络通常包含有三种层：**卷积层（Convolution layer）**、**池化层（Pooling layer）**、**全连接层（Fully Connected layer）**。仅用卷积层也有可能构建出很好的神经网络，但大部分神经网络还是会添加池化层和全连接层，它们更容易设计。
 
-### 池化层
+## 池化层
 
 卷积网络也经常使用池化层来缩减模型的大小，提高计算速度，同时提高所提取特征的鲁棒性。
 
 采用较多的一种池化过程叫做**最大池化（Max Pooling）**。将输入拆分成不同的区域，输出的每个元素都是对应区域中元素的最大值，如下图所示：
 
-![](21)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/class1/md_images/21.png)
 
 池化过程类似于卷积过程，上图所示的池化过程中相当于使用了一个大小 $f=2$的滤波器，且池化步长 $s=2$。卷积过程中的几个计算大小的公式也都适用于池化过程。如果有多个通道，那么就对每个通道分别执行计算过程。
 
 此例是计算 3×3 输出的每个元素，我们看左上角这些元素，注意这是一个 3×3 区域， 因为有 3 个过滤器，取最大值 9。然后移动一个元素，因为步幅是 1，蓝色区域的最大值是9.继续向右移动，蓝色区域的最大值是 5。然后移到下一行，因为步幅是 1，我们只向下移动一个格，所以该区域的最大值是 9。这个区域也是 9。这两个区域的最大值都是 5。最后这三个区域的最大值分别为 8，6 和 9。超参数 f=3，s=1，最终输出如图所示。
 
-![](22)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/class1/md_images/22.png)
 
 对最大池化的一种直观解释是，元素值较大可能意味着池化过程之前的卷积过程提取到了某些特定的特征，池化过程中的最大化操作使得只要在一个区域内提取到某个特征，它都会保留在最大池化的输出中。但是，没有足够的证据证明这种直观解释的正确性，而最大池化被使用的主要原因是它在很多实验中的效果都很好。
 
@@ -253,7 +235,7 @@ $$n^{[l]}\_W = \biggl\lfloor \frac{n^{[l-1]}\_W+2p^{[l]}-f^{[l]}}{s^{[l]}}+1   \
 
 另一种池化过程是**平均池化（Average Pooling）**，就是从取某个区域的最大值改为求这个区域的平均值：
 
-![](23)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/class1/md_images/23.png)
 
 池化过程的输入维度为：
 
@@ -265,11 +247,11 @@ $$\biggl\lfloor \frac{n\_H-f}{s}+1   \biggr\rfloor \times \biggl\lfloor \frac{n\
 
 ### 卷积神经网络示例
 
-![](24)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/class1/md_images/24.jpg)
 
 该卷积神经网络的参数：
 
-![](25)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/class1/md_images/25.png)
 
 有几点需要注意：第一，池化层和最大池化层没有参数；第二，卷积层的参数相对较少，前面也提到过，其实许多参数都存在于神经网络的全连接层。观察可发现，随着神经网络的加深，激活值尺寸会逐渐变小，如果激活值尺寸下降太快，也会影响神经网络性能。
 
@@ -281,7 +263,7 @@ $$\biggl\lfloor \frac{n\_H-f}{s}+1   \biggr\rfloor \times \biggl\lfloor \frac{n\
 - 常见模式就是一个或多个卷积后面跟随一个池化层，然后一个或多个卷积层后面再跟一个池化层，然后是几个全连接层，最后是一个 softmax。
     - Conv——Pool——Conv——Pool—— ……多个（Conv-Pool）… ——Fc——Fc——Fc——softmax。
 
-### 为什么使用卷积？
+## 为什么使用卷积？
 
 ** 和只用全连接层相比，卷积层的两个主要优势在于参数共享和稀疏连接。**
 
@@ -289,7 +271,7 @@ $$\biggl\lfloor \frac{n\_H-f}{s}+1   \biggr\rfloor \times \biggl\lfloor \frac{n\
 
 * **稀疏连接（Sparsity of connections）**：在每一层中，由于滤波器的尺寸限制，输入和输出之间的连接是稀疏的，每个输出值只取决于输入在局部的一小部分值。如下图所示：这个 0 是通过 3×3 的卷积计算得到的，它只依赖于这个 3×3 的输入的单元格，右边这个输出单元（元素0）仅与 36 个输入特征中 9 个相连接。而且其它像素值都不会对输出产生任影响，这就是稀疏连接。
 
-![](26)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/class1/md_images/26.png)
 
 神经网络可以通过这两种机制减少参数，以便我们用更小的训练集来训练它，从而预防过度拟合。卷积神经网络善于捕捉平移不变。通过观察可以发现，向右移动两个像素，图片中的猫依然清晰可见，因为神经网络的卷积结构使得即使移动几个像素，这张图片依然具有非常相似的特征，应该属于同样的输出标记。实际上，我们用同一个过滤器生成各层中，图片的所有像素值，希望网络通过自动学习变得更加健壮，以便更好地取得所期望的平移不变属性。
 
@@ -297,6 +279,3 @@ $$\biggl\lfloor \frac{n\_H-f}{s}+1   \biggr\rfloor \times \biggl\lfloor \frac{n\
 
 综上，就是卷积或卷积网络在计算机视觉任务中表现良好的原因。
 
-
-
->>>>>>> 0d88f58fb0a218f206083d921b94cce432588c7e
