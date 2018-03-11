@@ -279,3 +279,8 @@ $$\biggl\lfloor \frac{n\_H-f}{s}+1   \biggr\rfloor \times \biggl\lfloor \frac{n\
 
 综上，就是卷积或卷积网络在计算机视觉任务中表现良好的原因。
 
+最后，训练卷积神经网络。
+
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/class1/md_images/27.png)
+
+我们将训练集输入到卷积神经网络中，对网络进行训练。利用梯度下降（Adam、momentum等优化算法）最小化代价函数来寻找网络的最优参数。
