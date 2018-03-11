@@ -8,13 +8,16 @@
 
 一般的计算机视觉问题包含以下几类：
 
-- 图片分类（Image Classification）；
+- 图片分类（Image Classification）:
+
 ![Image Classification](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/blob/master/04-Convolutional%20Neural%20Networks/class1/md_images/01.png)
 
-- 目标检测（Object detection）；
+- 目标检测（Object detection）:
+
 ![Image Classification](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/blob/master/04-Convolutional%20Neural%20Networks/class1/md_images/02.png)
 
-- 神经风格转换（Neural Style Transfer）
+- 神经风格转换（Neural Style Transfer）:
+
 ![Image Classification](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/blob/master/04-Convolutional%20Neural%20Networks/class1/md_images/03.png)
 
 在应用计算机视觉是往往面临一个挑战，就是数据的输入可能会很大，比如一张1000x1000x3的图片，特征向量 x 的维度高达 300 万。所以在第一隐藏层中，你也许会有 1000 个隐藏单元，而所有的权值组成了矩阵 $l^{th}$ 。如果你使用了标准的全连接网络，这个矩阵的大小将会是 1000×300 万。因为现在 x 的维度为 3m，3m 通常用来表示 300 万。这意味着矩阵 $W^{[1]}$ 会有 30亿个参数，这是个非常巨大的数字。所以会产生两种后果：
