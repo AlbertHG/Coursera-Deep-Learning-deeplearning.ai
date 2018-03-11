@@ -145,4 +145,4 @@ $$\biggl\lfloor \frac{n+2p-f}{s}+1 \biggr\rfloor \times \biggl\lfloor \frac{n+2p
 
 ![](16)
 
-三个通道的过滤器可以实现针对某一个或者某几个通道的特征检测，比如如果你想检测图像红色通道的边缘，那么你可以将第一个过滤器设为 $$\[\begin{bmatrix} 1&0 &-1\\ 1&0 &-1 \\ 1&0 &-1 \end{bmatrix}\]$$ ，和之前一样，而绿色通道全为 $$\[\begin{bmatrix} 0&0 &0\\ 0&0 &0 \\ 0&0 &0\end{bmatrix}\]$$ ，蓝色也全为 0。如果你把这三个堆叠在一起形成一个 3×3×3 的过滤器，那么这就是一个检测垂直边界的过滤器，但只对红色通道有用
+三个通道的过滤器可以实现针对某一个或者某几个通道的特征检测，比如如果你想检测图像红色通道的边缘，那么你可以将第一个过滤器设为 $$\[\begin{bmatrix} 1&0 &-1\\ 1&0 &-1 \\ 1&0 &-1 \end{bmatrix}\]$$ ，和之前一样，而绿色通道全为https://latex.codecogs.com/gif.latex?\begin{bmatrix}&space;0&space;&&space;0&&space;0\\&space;0&&space;0&space;&&space;0\\&space;0&&space;0&&space;0&space;\end{bmatrix}，蓝色也全为 0。如果你把这三个堆叠在一起形成一个 3×3×3 的过滤器，那么这就是一个检测垂直边界的过滤器，但只对红色通道有用
