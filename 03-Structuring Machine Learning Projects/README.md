@@ -41,11 +41,11 @@ md_images | README.md内的图片源文件
 ## 机器学习策略(1)
 
 ### 为什么是ML策略
-
+----
 对于一个已经被构建好且产生初步结果的机器学习系统，为了能使结果更令人满意，往往还要进行大量的改进。鉴于之前的课程介绍了多种改进的方法，例如收集更多数据、调试超参数、调整神经网络的大小或结构、采用不同的优化算法、进行正则化等等，有针对性的调整才能事半功倍。
 
 ### 正交化
-
+----
 搭建机器学习系统的挑战之一便是可以尝试和改变的东西太多了。**正交化（Orthogonalization）** 的核心在于每次调整只会影响模型某一方面的性能，而对其他功能没有影响。这种方法有助于更快更有效地进行机器学习模型的调试和优化。
 
 ![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/03-Structuring%20Machine%20Learning%20Projects/md_images/01.png)
