@@ -48,7 +48,7 @@ md_images | README.md内的图片源文件
 
 搭建机器学习系统的挑战之一便是可以尝试和改变的东西太多了。**正交化（Orthogonalization）** 的核心在于每次调整只会影响模型某一方面的性能，而对其他功能没有影响。这种方法有助于更快更有效地进行机器学习模型的调试和优化。
 
-![](1)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/03-Structuring%20Machine%20Learning%20Projects/md_images/01.png)
 
 上图左侧是一张老式电视图片，有很多旋钮可以用来调整图像的各种性质。这些老式电视可能有一个旋钮来调整图像垂直方向的高度、一个旋钮用来调节图像的宽度、一个旋钮用来调节梯形角度、一个旋钮用来调节图像的左右偏移，还有一个旋钮用来调节图像选择的角度等。电视设计师花了大量时间设计电路来确保每个旋钮都有相对明确的功能，正交化指的就是电视设计师在设计旋钮时，让每个旋钮都只调整电视的一个方面。
 
@@ -93,7 +93,7 @@ $$F1 = \frac{2}{\frac{1}{P}+\frac{1}{R}} = \frac{2PR}{P+R}$$
 
 举个猫类识别的例子，有A，B，C三个模型，各个模型的Accuracy和Running time如下表中所示：
 
-![](2)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/03-Structuring%20Machine%20Learning%20Projects/md_images/02.jpg)
 
 Accuracy和Running time这两个性能不太合适综合成单值评价指标。因此，我们可以将Accuracy作为优化指标（Optimizing metic），将Running time作为满意指标（Satisficing metic）。也就是说，给Running time设定一个阈值，在其满足阈值的情况下，选择Accuracy最大的模型。如果设定Running time必须在100ms以内，那么很明显，模型C不满足阈值条件，首先剔除；模型B相比较模型A而言，Accuracy更高，性能更好。
 
@@ -107,7 +107,7 @@ Accuracy和Running time这两个性能不太合适综合成单值评价指标。
 
 原则上应该尽量保证Dev sets和Test sets来源于同一分布且都反映了实际样本的情况。如果Dev sets和Test sets不来自同一分布，那么我们从Dev sets上选择的“最佳”模型往往不能够在Test sets上表现得很好。这就好比我们在Dev sets上找到最接近一个靶的靶心的箭，但是我们Test sets提供的靶心却远远偏离Dev sets上的靶心，结果这支肯定无法射中Test sets上的靶心位置。
 
-![](3)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/03-Structuring%20Machine%20Learning%20Projects/md_images/03.jpg)
 
 ### 开发集和测试集的大小
 
@@ -154,7 +154,7 @@ $$J = \frac{1}{w^{(i)}}\sum_{m}^{i=1}w^{(i)}L(\hat{y}^{(i)},y^{(i)}),where\begin
 
 机器学习模型的表现通常会跟人类水平表现作比较，如下图所示：
 
-![](4)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/03-Structuring%20Machine%20Learning%20Projects/md_images/4.jpg)
 
 上图展示了随着时间的推进，机器学习系统和人的表现水平的变化。一般的，当机器学习超过人的表现水平后，它的进步速度逐渐变得缓慢，最终性能无法超过某个理论上限，这个上限被称为 **贝叶斯最优误差（Bayes Optimal Error）** 。
 
@@ -172,7 +172,7 @@ $$J = \frac{1}{w^{(i)}}\sum_{m}^{i=1}w^{(i)}L(\hat{y}^{(i)},y^{(i)}),where\begin
 
 假设针对两个问题分别具有相同的训练误差和交叉验证误差，如下所示：
 
-1[](5)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/03-Structuring%20Machine%20Learning%20Projects/md_images/5.jpg)
 
 对于左边的问题，人类的误差为 1\% ，对于右边的问题，人类的误差为 7.5\% 。
 
@@ -190,12 +190,12 @@ $$J = \frac{1}{w^{(i)}}\sum_{m}^{i=1}w^{(i)}L(\hat{y}^{(i)},y^{(i)}),where\begin
 
 ### 理解人类的表现
 
-![](06)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/03-Structuring%20Machine%20Learning%20Projects/md_images/06.png)
 
 比如在上图的例子中，第一个例子的训练误差是 5%，开发误差是 6%，而人类水平误差根据需要可以定义为 1%、0.7%或 0.5%。不论如何定义人类水平误差，在第一个例子中，它的可避免偏差大概是 4%，衡量方差的指标是 1%。此时，明显可避免偏差问题更大，在这种情况下，应该专注于减少偏差的技术，例如训练更大的网络。在第二个例子中，训练误差是1%，开发误差是 5%，所以可避免偏差大概是 0%到 0.5%，衡量方差的指标是 4%，此时方差问题更大，应该主要使用减少方差的工具，比如正则化或者去获取更大的训练集。在第三个例子中，训练误差是 0.7%，开发误差是 0.8%，此时选择哪个人类水平误差来估计贝叶斯最优误差就会对之后所采取的策略产生较大的影响。例如将人类水平误差定义为 0.5%，那么可避免偏差就是衡量方差的指标的两倍，这表明也许偏差和方差都存在问题，但可避免偏差问题更严重。但如果使用 0.7%来代替贝叶斯最优误差，那么会得到可避免偏差是 0%，这就可能导致忽略可避免偏差，而实际上应该继续尝试能不能在训练集上做得更好。
 由上述例子就可以理解为什么在机器学习问题上取得进展会变得越来越难。因为当接近人类水平之后，想取得进展就变得很困难。例如在上面例子中，一旦接近了人类水平，那么就很难去判断是否应该继续去拟合训练集。 当然，这种问题只会出现在算法已经做得很好的情况下。例如在上图左侧的两个例子中，它们远离人类水平，此时选择将优化目标放在偏差还是方差上就可能更容易一些。这也说明了为什么接近人类水平之后，很难去分辨出问题是出在偏差上还是方差上。
 
-![](07)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/03-Structuring%20Machine%20Learning%20Projects/md_images/07.png)
 
 ### 超越人类的表现
 
@@ -208,7 +208,7 @@ $$J = \frac{1}{w^{(i)}}\sum_{m}^{i=1}w^{(i)}L(\hat{y}^{(i)},y^{(i)}),where\begin
 1. 算法对训练集的拟合很好，可以看作可避免偏差很低；
 2. 如果算法在训练集上表现得很好，那么就将其推广到开发集和测试集，使得算法在这两个数据集上也表现得很好，也就是说方差不是太大。
 
-![](08)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/03-Structuring%20Machine%20Learning%20Projects/md_images/08.png)
 
 总结一下本章到目前为止的内容：如果想要提升机器学习系统的性能：
 
@@ -240,7 +240,7 @@ $$J = \frac{1}{w^{(i)}}\sum_{m}^{i=1}w^{(i)}L(\hat{y}^{(i)},y^{(i)}),where\begin
 
 为了并行的分析，建立表格来进行。以单个错误分类样本为对象，分析每个样本错误分类的原因。
 
-![](09)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/03-Structuring%20Machine%20Learning%20Projects/md_images/09.jpg)
 
 在表格的最左侧，列出需要分析的图像集，然后使用另外几列对应评估的想法。最后一列则通常被留下用来写评论（或者备注）。当填满整个表格后，就可以统计这些算法（错误）的百分比或者每个错误类型的百分比。例如下图所示的情况，检查的图像中 8%是狗、43%是其他的猫科动物，另外 61%是模糊的图像。
 
@@ -258,7 +258,7 @@ $$J = \frac{1}{w^{(i)}}\sum_{m}^{i=1}w^{(i)}L(\hat{y}^{(i)},y^{(i)}),where\begin
 
 而如果出现在验证集或者测试集，则可以在进行误差分析时，通过统计人为标记错误所占的百分比，来大致分析这种情况对模型的识别准确率的影响，并比较该比例的大小和其他错误类型的比例，以此判断是否值得去将错误的标记一一进行修正，还是可以忽略。
 
-![](10)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/03-Structuring%20Machine%20Learning%20Projects/md_images/10.jpg)
 
 上图例子中，假设它所占的百分比是 6%，那么是否值得修正这 6%的标记出错的例子呢？
 
@@ -292,7 +292,7 @@ $$J = \frac{1}{w^{(i)}}\sum_{m}^{i=1}w^{(i)}L(\hat{y}^{(i)},y^{(i)}),where\begin
 
 下面是一些处理训练集和测试集存在差异的最佳的做法。以前一周中的猫的分类问题为例：假设现在想识别一个手机应用中用户上传的他们用手机拍摄的照片是不是猫？
 
-![](11)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/03-Structuring%20Machine%20Learning%20Projects/md_images/11.png)
 
 现在存在的现状是：我们可以从网上获取大量的高清晰的猫的图片200000张， 从手机获取拍摄的不清晰的图片10000张。但是我们系统的目的是应用到手机上做分类。也就是说，我们的训练集和开发集、测试集来自于不同的分布。
 
@@ -365,7 +365,7 @@ $$J = \frac{1}{w^{(i)}}\sum_{m}^{i=1}w^{(i)}L(\hat{y}^{(i)},y^{(i)}),where\begin
 - 而“训练-验证集错误率”和“验证集错误率”的差值反映了 **样本分布不一致的问题** ，从而说明模型擅长处理的数据和我们关心的数据来自不同的分布，我们称之为 **数据不匹配（Data Mismatch）** 问题；
 - “开发集错误率”和“测试集错误率”的差值反映了开发集的 **过拟合** 水平。
 
-![](12)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/03-Structuring%20Machine%20Learning%20Projects/md_images/12.jpg)
 
 一般情况下，人类水平误差、训练集错误率、训练-验证集错误率、验证集错误率以及测试集错误率的数值是递增的，但是也会出现验证集错误率和测试集错误率下降的情况。这主要可能是因为训练样本比验证/测试样本更加复杂，难以训练。
 
@@ -386,13 +386,13 @@ $$J = \frac{1}{w^{(i)}}\sum_{m}^{i=1}w^{(i)}L(\hat{y}^{(i)},y^{(i)}),where\begin
 
 例如，我们将为猫识别器构建的神经网络迁移应用到放射科诊断中。因为猫识别器的神经网络已经学习到了有关图像的结构和性质等方面的知识，利用之前的神经网络模型，只改变神经网络中原有的输出层，加入新的输出层并随机初始化权重系数（$W^{[L]}$、$b^{[L]}$），而其它层所有的权重系数$W^{[l]}$、$b^{[l]}$）不变，随后用新的训练集进行训练，就完成了以上的迁移学习。
 
-![](13)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/03-Structuring%20Machine%20Learning%20Projects/md_images/13.png)
 
 如果新的数据集很小，可能只需要重新训练输出层前的最后一层的权重，即$W^{[L]}$、$b^{[L]}$，并保持其他参数不变；而如果有足够多的数据，可以只保留网络结构，重新训练神经网络中所有层的系数。这时初始权重由之前的模型训练得到，这个过程称为 **预训练（Pre-Training）** ，之后的权重更新过程称为 **微调（Fine-Tuning）** 。
 
 你也可以不止加入一个新的输出层，而是多向神经网络加几个新层。
 
-![](14)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/03-Structuring%20Machine%20Learning%20Projects/md_images/14.jpg)
 
 迁移学习起作用的场合是迁移来源有很多某个问题的数据，但迁移目标问题却没有那么多数据。假如图像识别任务中有 1 百万个样本，这就有足够的数据帮助神经网络学习低层次特征。如果放射科任务只有一百个样本，那么就意味着放射科诊断问题的数据很少，这时，将从图像识别训练中学习到的很多知识迁移到放射科诊断问题就是合理的。
 
@@ -410,7 +410,7 @@ $$J = \frac{1}{w^{(i)}}\sum_{m}^{i=1}w^{(i)}L(\hat{y}^{(i)},y^{(i)}),where\begin
 
 以汽车自动驾驶为例，需要实现的多任务是：不只是要判断图片是否为行人图片、车辆版、交通标志和信号灯图片，而是要知道每张照片是否有行人、汽车、停车标记或者交通灯。如果在输入的图像中检测出车辆和交通标志，则输出的 y 为：
 
-![](15)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/03-Structuring%20Machine%20Learning%20Projects/md_images/15.png)
 
 多任务学习模型的成本函数为：
 
@@ -438,7 +438,7 @@ $$L(\hat y\_j^{(i)}, y\_j^{(i)}) = -y\_j^{(i)} log \hat y\_j^{(i)} - (1 -y\_j^{(
 
 语音识别例子：
 
-![](16)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/03-Structuring%20Machine%20Learning%20Projects/md_images/16.jpg)
 
 ### 优点与缺点
 
