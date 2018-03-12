@@ -197,7 +197,7 @@ $$a^{[l+2]} = g(a^{[l]}) = ReLU(a^{[l]}) = a^{[l]}$$
 
 多个Inception 模块的堆叠构成Inception Network，下面是GoogleNet的结构：
 
-![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/week2/md_images/18.png)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/week2/md_images/18.jpg)
 
 所以这些分支有什么用呢？在网络的最后几层，通常称为全连接层，在它之后是一个 softmax 层（编号 1）来做出预测，这些分支（编号 2）所做的就是通过隐藏层（编号 3）来做出预测，所以这其实是一个 softmax 输出（编号 2），这（编号 1）也是。这是另一条分支（编号 4），它也包含了一个隐藏层，通过一些全连接层，然后有一个 softmax 来预测，输出结果的标签。
 
