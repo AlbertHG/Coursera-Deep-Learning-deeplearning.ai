@@ -90,13 +90,13 @@ ResNet是由残差块（Residual block）构成：
 
 ![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/week2/md_images/08.jpg)
 
-- Linear：$$z^{[l+1]} = W^{[l+1]}a^{[l]} + b^{[l+1]}$$
+- Linear：$z^{[l+1]} = W^{[l+1]}a^{[l]} + b^{[l+1]}$
 
-- Relu：$$a^{[l+1]} = g(z^{[l+1]})$$
+- Relu：$a^{[l+1]} = g(z^{[l+1]})$
 
-- Linear：$$z^{[l+2]} = W^{[l+2]}a^{[l+1]} + b^{[l+2]}$$
+- Linear：$z^{[l+2]} = W^{[l+2]}a^{[l+1]} + b^{[l+2]}$
 
-- Relu：$$a^{[l+2]} = g(z^{[l+2]} + a^{[l]})$$
+- Relu：$a^{[l+2]} = g(z^{[l+2]} + a^{[l]})$
 
 构建一个残差网络就是将许多残差块堆积在一起，形成一个深度网络。
 
