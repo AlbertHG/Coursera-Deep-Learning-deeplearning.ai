@@ -141,7 +141,7 @@ $$J = \frac{1}{m}\sum_{m}^{i=1}L(\hat{y}^{(i)},y^{(i)})$$
 
 更改评价标准后的Cost function：
 
-$$J = \frac{1}{w^{(i)}}\sum_{m}^{i=1}w^{(i)}L(\hat{y}^{(i)},y^{(i)}),where\begin{cases} 1&\text{ if } x^{(i)}不是色情图片 \\ 10&\text{ if } x^{(i)}= 是色情图片 \end{cases}$$
+$$J = \frac{1}{w^{(i)}}\sum_{m}^{i=1}w^{(i)}L(\hat{y}^{(i)},y^{(i)}),where\begin{cases} 1&\text{ if } x^{(i)} =non-porn \\ 10&\text{ if } x^{(i)} =porn \end{cases}$$
 
 这样通过设置权重，当算法将色情图片分类为猫时，误差项会快速变大。
 
