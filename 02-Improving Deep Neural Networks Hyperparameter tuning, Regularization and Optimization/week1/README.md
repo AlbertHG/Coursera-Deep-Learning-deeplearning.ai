@@ -199,11 +199,11 @@ $$(1 - \frac{\alpha\lambda}{m})W^{[l]}<1$$
 
 ![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/02-Improving%20Deep%20Neural%20Networks%20Hyperparameter%20tuning%2C%20Regularization%20and%20Optimization/week1/md_images/06.png)
 
-在加入正则化项后，当 λ 增大，导致 $W^{[l]}$减小，$Z^{[l]} = W^{[l]}a^{[l-1]} + b^{[l]}$便会减小。由上图可知，在 z 较小（接近于 0）的区域里，`tanh(z)`函数近似线性，所以每层的函数就近似线性函数，整个网络就成为一个简单的近似线性的网络，因此不会发生过拟合。
+在加入正则化项后，当 $λ$ 增大，导致 $W^{[l]}$减小，$Z^{[l]} = W^{[l]}a^{[l-1]} + b^{[l]}$便会减小。由上图可知，在 $z$ 较小（接近于 0）的区域里，`tanh(z)`函数近似线性，所以每层的函数就近似线性函数，整个网络就成为一个简单的近似线性的网络，因此不会发生过拟合。
 
 ### 其他解释
 
-在权值 $w^{[L]}$变小之下，输入样本 X 随机的变化不会对神经网络模造成过大的影响，神经网络受局部噪音的影响的可能性变小。这就是正则化能够降低模型方差的原因。
+在权值 $w^{[L]}$变小之下，输入样本 $X$ 随机的变化不会对神经网络模造成过大的影响，神经网络受局部噪音的影响的可能性变小。这就是正则化能够降低模型方差的原因。
 
 ## dropout正则化
 
@@ -222,11 +222,11 @@ al = np.multiply(al, dl)
 al /= keep_prob
 ```
 
-最后一步`al /= keep_prob`是因为 $a^{[l]}$中的一部分元素失活（相当于被归零），为了在下一层计算时不影响 $Z^{[l+1]} = W^{[l+1]}a^{[l]} + b^{[l+1]}$的期望值，因此$W^{[l+1]}a^{[l]}$除以一个`keep_prob`,用来弥补$Z^{[l+1]}$20%的损失。
+最后一步`al /= keep_prob`是因为 $a^{[l]}$中的一部分元素失活（相当于被归零），为了在下一层计算时不影响 $Z^{[l+1]} = W^{[l+1]}a^{[l]} + b^{[l+1]}$ 的期望值，因此 $W^{[l+1]}a^{[l]}$ 除以一个`keep_prob`,用来弥补 $Z^{[l+1]}$  20%的损失。
 
-假设第 l 层有50个神经元，经过dropout后，有10个神经元停止工作，这样只有40神经元有作用。那么得到的$a^{[l]}$只相当于原来的80%。scale up后，能够尽可能保持$a^{[l]}$的期望值相比之前没有大的变化。
+假设第 $l$ 层有50个神经元，经过dropout后，有10个神经元停止工作，这样只有40神经元有作用。那么得到的 $a^{[l]}$ 只相当于原来的80%。scale up后，能够尽可能保持 $a^{[l]}$ 的期望值相比之前没有大的变化。
 
-对于m个样本，单次迭代训练时，随机删除掉隐藏层一定数量的神经元；然后，在删除后的剩下的神经元上正向和反向更新权重w和常数项b；接着，下一次迭代中，再恢复之前删除的神经元，重新随机删除一定数量的神经元，进行正向和反向更新w和b。不断重复上述过程，直至迭代训练完成。
+对于 $m$ 个样本，单次迭代训练时，随机删除掉隐藏层一定数量的神经元；然后，在删除后的剩下的神经元上正向和反向更新权重 $w$ 和常数项 $b$ ；接着，下一次迭代中，再恢复之前删除的神经元，重新随机删除一定数量的神经元，进行正向和反向更新 $w$ 和 $b$ 。不断重复上述过程，直至迭代训练完成。
 
 **注意** ，在 **测试阶段不要使用 dropout** ，因为那样会使得预测结果变得随机。
 
@@ -236,11 +236,11 @@ al /= keep_prob
 
 因此，通过传播过程，dropout 将产生和 L2 正则化相同的 **收缩权重** 的效果。
 
-对于不同的层，设置的`keep_prob`也不同。一般来说，神经元较少的层，会设`keep_prob`为 1.0，而神经元多的层则会设置比较小的`keep_prob`，比如0.8甚至0.5。
+对于不同的层，设置的`keep_prob`也不同。一般来说，神经元较少的层，会设`keep_prob`为 1.0，而神经元多的层则会设置比较小的`keep_prob`，比如 0.8 甚至 0.5 。
 
 dropout 的一大 **缺点** 是成本函数无法被明确定义。因为每次迭代都会随机消除一些神经元结点的影响，因此无法确保成本函数单调递减。
 
-一般做法是，将所有层的`keep_prob`全设置为1，再绘制cost function，即涵盖所有神经元，看J是否单调下降。下一次迭代训练时，再将`keep_prob`设置为其它值。
+一般做法是，将所有层的`keep_prob`全设置为 1，再绘制cost function，即涵盖所有神经元，看J是否单调下降。下一次迭代训练时，再将`keep_prob`设置为其它值。
 
 ## 其他正则化方法
 
@@ -252,13 +252,13 @@ dropout 的一大 **缺点** 是成本函数无法被明确定义。因为每次
 
 ![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/02-Improving%20Deep%20Neural%20Networks%20Hyperparameter%20tuning%2C%20Regularization%20and%20Optimization/week1/md_images/09.jpg)
 
-然而，Early Stopping有其自身的缺点，通常来说，机器学习训练模型有两个目标：一是优化cost function，尽量减小J；二是防止过拟合。这两个目标彼此对立的，即减小J的同时可能会造成过拟合，反之亦然。
+然而，Early Stopping有其自身的缺点，通常来说，机器学习训练模型有两个目标：一是优化cost function，尽量减小 $J$ ；二是防止过拟合。这两个目标彼此对立的，即减小 $J$ 的同时可能会造成过拟合，反之亦然。
 
 但是，Early Stopping的做法通过减少得带训练次数来防止过拟合，这样J就不会足够小。也就是说，early Stopping将上述两个目标融合在一起，同时优化，但可能没有“分而治之”的效果好。
 
 ## 标准化(归一化)输入
 
-使用标准化处理输入 X 能够有效加速收敛。标准化输入就是对训练数据集进行归一化的操作，即将原始数据减去其均值$\mu$后，再除以其方差 $\sigma^2$：
+使用标准化处理输入 $X$ 能够有效加速收敛。标准化输入就是对训练数据集进行归一化的操作，即将原始数据减去其均值 $\mu$ 后，再除以其方差 $\sigma^2$ ：
 
 $$x = \frac{x - \mu}{\sigma}$$
 
@@ -289,8 +289,8 @@ $$\sigma = \sqrt{\frac{1}{m}\sum_{i=1}^{m}x^{{(i)}^2}}$$
 
 $$\hat{Y} = W^{[L]}W^{[L-1]}...W^{[2]}W^{[1]}X$$
 
-- 如果各层权重 $W^{[l]}$ 的元素都稍大于1，例如1.5, $W^{[l]}=\left[ \begin{array}{l}1.5 & 0 \\\ 0 & 1.5\end{array} \right]$，则预测输出 $\hat{Y}$ 将正比于 $1.5^{L}$ 。L越大， $\hat{Y}$ 越大，且呈指数型增长。我们称之为数值爆炸。
-- 相反，如果各层权重 $W^{[l]}$ 的元素都稍小于1，例如0.5，$W^{[l]}=\left[ \begin{array}{l}0.5 & 0 \\\ 0 & 0.5\end{array} \right] $，则预测输出 $\hat{Y}$ 将正比于 $0.5^{L}$ 。网络层数L越多， $\hat{Y}$ 呈指数型减小。我们称之为数值消失。
+- 如果各层权重 $W^{[l]}$ 的元素都稍大于 1 ，例如 1.5, $W^{[l]}=\left[ \begin{array}{l}1.5 & 0 \\\ 0 & 1.5\end{array} \right]$，则预测输出 $\hat{Y}$ 将正比于 $1.5^{L}$ 。$L$ 越大， $\hat{Y}$ 越大，且呈指数型增长。我们称之为数值爆炸。
+- 相反，如果各层权重 $W^{[l]}$ 的元素都稍小于 1，例如 0.5，$W^{[l]}=\left[ \begin{array}{l}0.5 & 0 \\\ 0 & 0.5\end{array} \right]$ ，则预测输出 $\hat{Y}$ 将正比于 $0.5^{L}$ 。网络层数L越多， $\hat{Y}$ 呈指数型减小。我们称之为数值消失。
 
 ## 神经网络的权重初始化
 
@@ -302,15 +302,15 @@ $$z={w}_1{x}\_1+{w}\_2{x}\_2 + ... + {w}\_n{x}\_n + b$$
 
 ![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/02-Improving%20Deep%20Neural%20Networks%20Hyperparameter%20tuning%2C%20Regularization%20and%20Optimization/week1/md_images/13.jpg)
 
-思路是让w与n有关，且n越大，w应该越小才好。这样能够保证z不会过大:
+思路是让$w$与$n$有关，且$n$越大，$w$应该越小才好。这样能够保证$z$不会过大:
 
 不同激活函数的参数初始化：
-- 激活函数使用ReLu：令$W$方差$Var(w_i) = \frac{2}{n}$，相应的`python`代码是：
+- 激活函数使用ReLu：令 $W$ 方差$Var(w_i) = \frac{2}{n}$，相应的`python`代码是：
 
     ```py
     WL = np.random.randn(WL.shape[0], WL.shape[1]) * np.sqrt(1/n)
     ````
-- 激活函数使用tenh：令$W$方差$Var(w_i) = \frac{1}{n}$，相应的`python`代码是：
+- 激活函数使用tenh：令 $W$ 方差$Var(w_i) = \frac{1}{n}$，相应的`python`代码是：
     ```py
     w[l] = np.random.randn(n[l],n[l-1])*np.sqrt(2/n[l-1])  
     ```
@@ -322,23 +322,17 @@ $$z={w}_1{x}\_1+{w}\_2{x}\_2 + ... + {w}\_n{x}\_n + b$$
 
 使用双边误差的方法去逼近导数，精度要高于单边误差。
 
-- 单边误差：
+- 单边误差：$f'(\theta) = {\lim_{\varepsilon\to 0}} = \frac{f(\theta + \varepsilon) - (\theta)}{\varepsilon}$，误差：$O(\varepsilon)$
 
 ![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/02-Improving%20Deep%20Neural%20Networks%20Hyperparameter%20tuning%2C%20Regularization%20and%20Optimization/week1/md_images/14.png)
 
-$$f'(\theta) = {\lim_{\varepsilon\to 0}} = \frac{f(\theta + \varepsilon) - (\theta)}{\varepsilon}$$
-
-误差：$O(\varepsilon)$
 
 - 双边误差：
+$f'(\theta) = {\lim_{\varepsilon\to 0}} = \frac{f(\theta + \varepsilon) - (\theta - \varepsilon)}{2\varepsilon}$，误差：$O(\varepsilon^2)$
 
 ![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/02-Improving%20Deep%20Neural%20Networks%20Hyperparameter%20tuning%2C%20Regularization%20and%20Optimization/week1/md_images/15.png)
 
-$$f'(\theta) = {\lim_{\varepsilon\to 0}} = \frac{f(\theta + \varepsilon) - (\theta - \varepsilon)}{2\varepsilon}$$
-
-误差：$O(\varepsilon^2)$
-
-当 ε 越小时，结果越接近真实的导数，也就是梯度值。可以使用这种方法来判断反向传播进行梯度下降时，是否出现了错误。
+当 $ε$ 越小时，结果越接近真实的导数，也就是梯度值。可以使用这种方法来判断反向传播进行梯度下降时，是否出现了错误。
 
 ## 梯度检验
 
@@ -346,11 +340,11 @@ $$f'(\theta) = {\lim_{\varepsilon\to 0}} = \frac{f(\theta + \varepsilon) - (\the
 
 ### 连接参数
 
-将 $W^{[1]}$，$b^{[1]}$，...，$W^{[L]}$，$b^{[L]}$全部连接出来，成为一个巨型向量 θ。这样，
+将 $W^{[1]}$，$b^{[1]}$，...，$W^{[L]}$，$b^{[L]}$ 全部连接出来，成为一个巨型向量 $θ$。这样，
 
 $$J(W^{[1]}, b^{[1]}, ..., W^{[L]}，b^{[L]})=J(\theta)$$
 
-同时，对 $dW^{[1]}$，$db^{[1]}$，...，$dW^{[L]}$，$db^{[L]}$执行同样的操作得到巨型向量 dθ，它和 θ 有同样的维度。
+同时，对 $dW^{[1]}$，$db^{[1]}$，...，$dW^{[L]}$，$db^{[L]}$ 执行同样的操作得到巨型向量 $dθ$，它和 $θ$ 有同样的维度。
 
 ![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/02-Improving%20Deep%20Neural%20Networks%20Hyperparameter%20tuning%2C%20Regularization%20and%20Optimization/week1/md_images/16.jpg)
 
@@ -370,9 +364,9 @@ $$\frac{{||d\theta\_{approx} - d\theta||}\_2}{{||d\theta\_{approx}||}\_2+{||d\th
 
 $${||x||}\_2 = \sum^N\_{i=1}{|x_i|}^2$$
 
-表示向量 x 的 2-范数（也称“欧几里德范数”），它是误差平方之和，然后求平方根，得到的欧氏距离。
+表示向量 $x$ 的 L2-范数（也称“欧几里德范数”），它是误差平方之和，然后求平方根，得到的欧氏距离。
 
-如果梯度检验值和 ε 的值相近，说明神经网络的实施是正确的，否则要去检查代码是否存在 bug。
+如果梯度检验值和 $ε$ 的值相近，说明神经网络的实施是正确的，否则要去检查代码是否存在 bug。
 
 - 一般来说，如果欧氏距离越小，例如 $10^{-7}$ ，甚至更小，则表明 $d\theta_{approx}$ 与 $d\theta$ 越接近，即反向梯度计算是正确的，没有bugs。
 - 如果欧氏距离较大，例如 $10^{-5}$ ，则表明梯度计算可能出现问题，需要再次检查是否有bugs存在。
