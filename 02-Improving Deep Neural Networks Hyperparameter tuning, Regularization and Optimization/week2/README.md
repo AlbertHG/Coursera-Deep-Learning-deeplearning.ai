@@ -61,7 +61,7 @@ $\}$
 
 batch 梯度下降法和 Mini-batch 梯度下降法代价函数的变化趋势如下，使用 batch 梯度下降法，成本是随着迭代次数不断减少的，而使用 Mini-Batches 梯度下降法，呈现震荡下降的趋势。
 
-![](01)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/02-Improving%20Deep%20Neural%20Networks%20Hyperparameter%20tuning%2C%20Regularization%20and%20Optimization/week2/md_images/01.png)
 
 之所以出现细微振荡的原因是不同的mini-batch之间是有差异的。例如可能第一个子集 $(X^{\{1\}},Y^{\{1\}})$ 是好的子集，而第二个子集 $(X^{\{2\}},Y^{\{2\}})$ 包含了一些噪声 noise。出现细微振荡是正常的。
 
@@ -77,7 +77,7 @@ batch 的不同大小（size）带来的影响
     - 可以实现快速学习，也应用了向量化带来的好处；
     - 且 Cost function 的下降处于前两者之间。
 
-![](02)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/02-Improving%20Deep%20Neural%20Networks%20Hyperparameter%20tuning%2C%20Regularization%20and%20Optimization/week2/md_images/02.png)
 
 决定的变量之一是 mini-batch 的大小（m 是训练集的大小）。
 
@@ -112,7 +112,7 @@ s_t = \begin{cases} Y_1, &t = 1 \\\ \beta Y_t + (1-\beta)s_{t-1}, &t > 1 \end{ca
 
 指数加权平均数在统计学中被称为“指数加权移动平均值”。
 
-![](04)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/02-Improving%20Deep%20Neural%20Networks%20Hyperparameter%20tuning%2C%20Regularization%20and%20Optimization/week2/md_images/04.jpg)
 
 比如：给定一个时间序列，例如伦敦一年每天的气温值，图中蓝色的点代表真实数据，对于一个即时的气温值。
 
@@ -122,7 +122,7 @@ s_t = \begin{cases} Y_1, &t = 1 \\\ \beta Y_t + (1-\beta)s_{t-1}, &t > 1 \end{ca
 
 $β$ 越大相当于求取平均利用的天数越多，曲线自然就会越平滑而且越滞后。
 
-![](03)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/02-Improving%20Deep%20Neural%20Networks%20Hyperparameter%20tuning%2C%20Regularization%20and%20Optimization/week2/md_images/03.png)
 
 ## 理解指数加权平均
 
@@ -171,7 +171,7 @@ $$v := \beta v + (1 - \beta)\theta_t$$
 
 在我们执行指数加权平均的公式时，当 ￥\beta=0.98￥ 时，我们得到的并不是图中的绿色曲线，而是下图中的紫色曲线，其起点比较低。
 
-![](05)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/02-Improving%20Deep%20Neural%20Networks%20Hyperparameter%20tuning%2C%20Regularization%20and%20Optimization/week2/md_images/05.jpg)
 
 原因是：
 
@@ -192,7 +192,7 @@ $$\frac{v\_t}{1-\beta^t} = \beta v_{t-1} + (1 - \beta)\theta_t$$
 
 在我们优化 Cost function 的时候，以下图所示的函数图为例：
 
-![](06)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/02-Improving%20Deep%20Neural%20Networks%20Hyperparameter%20tuning%2C%20Regularization%20and%20Optimization/week2/md_images/06.jpg)
 
 在利用梯度下降法来最小化该函数的时候，每一次迭代所更新的代价函数值如图中蓝色线所示在上下波动，而这种幅度比较大波动，减缓了梯度下降的速度，而且我们只能使用一个较小的学习率来进行迭代。
 
@@ -227,7 +227,7 @@ $$s_{db} = \beta s_{db} + (1 - \beta)(db)^2$$
 $$w := w - \alpha \frac{dw}{\sqrt{s_{dw} + \epsilon}}$$
 $$b := b - \alpha \frac{db}{\sqrt{s_{db} + \epsilon}}$$
 
-![](07)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/02-Improving%20Deep%20Neural%20Networks%20Hyperparameter%20tuning%2C%20Regularization%20and%20Optimization/week2/md_images/07.jpg)
 
 从图中可以看出，梯度下降（蓝色折线）在垂直方向（$b$）上振荡较大，在水平方向（$W$）上振荡较小，表示在b方向上梯度较大，即 $db$ 较大，而在W方向上梯度较小，即  $dW$ 较小。因此，上述表达式中 $S_b$ 较大，而 $S_W$ 较小。在更新W和b的表达式中，变化值 $\frac{dW}{\sqrt{S_W}}$ 较大，而 $\frac{db}{\sqrt{S_b}}$ 较小。也就使得W变化得多一些，$b$ 变化得少一些。即加快了 $W$ 方向的速度，减小了 $b$ 方向的速度，减小振荡，实现快速梯度下降算法，其梯度下降过程如绿色折线所示。总得来说，就是如果哪个方向振荡大，就减小该方向的更新速度，从而减小振荡。
 
@@ -285,7 +285,7 @@ $β_1$、$β_2$、$ϵ$ 通常不需要调试。
 
 而如果随着时间慢慢减少学习率 $α$ 的大小，在初期 $α$ 较大时，下降的步长较大，能以较快的速度进行梯度下降；而后期逐步减小 $α$ 的值，即减小步长，有助于算法的收敛，更容易接近最优解。
 
-![](08)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/02-Improving%20Deep%20Neural%20Networks%20Hyperparameter%20tuning%2C%20Regularization%20and%20Optimization/week2/md_images/08.jpg)
 
 - 下图中，蓝色折线表示使用恒定的学习因子 $\alpha$ ，由于每次训练  $\alpha $相同，步进长度不变，在接近最优值处的振荡也大，在最优值附近较大范围内振荡，与最优值距离就比较远。
 - 绿色折线表示使用不断减小的 $\alpha$ ，随着训练次数增加， $\alpha$ 逐渐减小，步进长度减小，使得能够在最优值处较小范围内微弱振荡，不断逼近最优值。
@@ -310,7 +310,7 @@ $$\alpha = \frac{k}{\sqrt{epoch\\\_num}} * \alpha\_0$$
 
 ## 局部最优问题
 
-![](09)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/02-Improving%20Deep%20Neural%20Networks%20Hyperparameter%20tuning%2C%20Regularization%20and%20Optimization/week2/md_images/09.jpg)
 
 在低维度的情形下，我们可能会想象到一个Cost function 如左图所示，存在一些局部最小值点，在初始化参数的时候，如果初始值选取的不得当，会存在陷入局部最优点的可能性。
 
@@ -318,7 +318,7 @@ $$\alpha = \frac{k}{\sqrt{epoch\\\_num}} * \alpha\_0$$
 
 类似马鞍状的plateaus会降低神经网络学习速度。Plateaus是梯度接近于零的平缓区域，如下图所示。在plateaus上梯度很小，前进缓慢，到达鞍点需要很长时间。到达鞍点后，由于随机扰动，梯度一般能够沿着图中绿色箭头，离开鞍点，继续前进，只是在plateaus上花费了太多时间。
 
-![](10)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/02-Improving%20Deep%20Neural%20Networks%20Hyperparameter%20tuning%2C%20Regularization%20and%20Optimization/week2/md_images/10.jpg)
 
 结论：
 
