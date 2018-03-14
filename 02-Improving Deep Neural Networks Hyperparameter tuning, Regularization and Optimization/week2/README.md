@@ -43,7 +43,7 @@ Mini-Batch 梯度下降法（小批量梯度下降法）每次同时处理单个
 - $Z^{[l]}$ ：神经网络第 $l$ 层网络的线性输出
 - $X^{\{t\}},Y^{\{t\}}$ ：第 $t$ 组 mini-batch
 
-$for\ \ t=1,\cdots,T\ \ \{$
+for  t=1,...,T  \{
 
 $\ \ \ \ Forward\ Propagation$
 
@@ -55,7 +55,7 @@ $\ \ \ \ W:=W-\alpha\cdot dW$
 
 $\ \ \ \ b:=b-\alpha\cdot db$
 
-$\}$
+\}
 
 经过 $T$ 次循环之后，所有 $m$ 个训练样本都进行了梯度下降计算。这个过程，我们称之为经历了一个 epoch。对于 batch 梯度下降法来说，一个 epoch 只进行一次梯度下降算法；而 Mini-Batches 梯度下降法，一个epoch会进行 $T$ 次梯度下降算法。
 
