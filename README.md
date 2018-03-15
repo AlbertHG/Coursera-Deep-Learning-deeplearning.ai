@@ -24,11 +24,14 @@
 
 ## 课程地址
 
-[deeplearning.ai - 网易云课堂 - 深度学习工程微专业](https://study.163.com/provider/2001053000/index.htm)
+[deeplearning.ai - 网易云课堂 - 深度学习工程师微专业](https://study.163.com/provider/2001053000/index.htm)
 
 
 
 ## 参考项目
+
+在整理自己的笔记的时候，从下列道友中参考了很多内容，谢之：
+
 * [红色石头的机器学习之路](https://zhuanlan.zhihu.com/Redstone)
 * [机器学习之路](https://zhuanlan.zhihu.com/koalatree)
 * [KyonHuang-吴恩达《深度学习》系列课程笔记](http://kyonhuang.top/Andrew-Ng-Deep-Learning-notes/#/)
