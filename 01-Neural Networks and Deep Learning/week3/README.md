@@ -32,7 +32,7 @@ Planar data classification with one hidden layer.ipynb |  本周第1个编程�
 
 **输出层（the output layer）** 负责输出预测值。
 
-![](01)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/01-Neural%20Networks%20and%20Deep%20Learning/week3/md_images/01.png)
 
 神经网络基本的结构和符号可以从上面的图中看出，这里不再复述。
 
@@ -53,11 +53,13 @@ Planar data classification with one hidden layer.ipynb |  本周第1个编程�
 
 除输入层之外每层的计算输出可由下图总结出：
 
-![](02)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/01-Neural%20Networks%20and%20Deep%20Learning/week3/md_images/02.jpg)
+
 
 如下图所示，逻辑回归的正向计算可以分解成计算z和a的两部分：
 
-![](03)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/01-Neural%20Networks%20and%20Deep%20Learning/week3/md_images/03.jpg)
+
 
 对于两层神经网络，从输入层到隐藏层对应一次逻辑回归运算；从隐藏层到输出层对应一次逻辑回归运算。每层计算时，要注意对应的上标和下标，一般我们记上标方括号表示layer，下标表示第几个神经元。例如 $a_i^{[l]}$表示第$l$层的第$i$个神经元。注意，$i$从1开始，$l$从0开始。
 
@@ -85,7 +87,8 @@ $$a^{[1]}=\sigma(z^{[1]}) $$
 $$z^{[2]}=W^{[2]}a^{[1]}+b^{[2]}$$
 $$a^{[2]}=\sigma(z^{[2]})$$
 
-![](04)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/01-Neural%20Networks%20and%20Deep%20Learning/week3/md_images/04.jpg)
+
 
 之前也介绍过，这里顺便提一下， $W^{[1]}$的维度是$(4,3)$， $b^{[1]}$的维度是$(4,1)$，$ W^{[2]}$的维度是$(1,4)$， $b^{[2]}$的维度是$(1,1)$。这点需要特别注意。
 
@@ -138,7 +141,8 @@ $A^{[2]}=\sigma(Z^{[2]})$
 
 Leaky ReLU 保证在 $z < 0$ 的时候，梯度仍然不为 0。理论上来说，Leaky ReLU 有 ReLU 的所有优点，但在实际操作中没有证明总是好于 ReLU，因此不常用。
 
-![](05)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/01-Neural%20Networks%20and%20Deep%20Learning/week3/md_images/05.png)
+
 
 在选择激活函数的时候，如果在不知道该选什么的时候就选择 ReLU，当然也没有固定答案，要依据实际问题在交叉验证集合中进行验证分析。当然，我们可以在不同层选用不同的激活函数。
 
@@ -180,7 +184,8 @@ $$A^{[2]}=g^{[2]}(Z^{[2]})=\sigma(Z^{[2]})$$
 
 神经网络反向梯度下降公式（左）和其代码向量化（右）：
 
-![](06)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/01-Neural%20Networks%20and%20Deep%20Learning/week3/md_images/06.png)
+
 
 ## 随机初始化
 
