@@ -25,9 +25,7 @@ Deep Neural Network for Image Classification-Application.ipynb |  本周第2个
    * [深层神经网络的前向传播和反向传播](#深层神经网络的前向传播和反向传播)
    * [核对矩阵的维数](#核对矩阵的维数)
    * [使用深层表示的原因](#使用深层表示的原因)
-   * [搭建神经网络块](#搭建神经网络块)
-
-
+   * [参数和超参数](#参数和超参数)
 
 ## 深层神经网络的前向传播和反向传播
 
@@ -35,7 +33,7 @@ Deep Neural Network for Image Classification-Application.ipynb |  本周第2个
 
 以上面讲过的4层神经网络为例
 
-![](02)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/01-Neural%20Networks%20and%20Deep%20Learning/week4/md_images/02.jpg)
 
 **输入** ：$a^{[l-1]}$
 
@@ -106,13 +104,13 @@ $$Z^{[l]}, A^{[l]}: (n^{[l]}, m)$$
 
 ## 使用深层网络的原因
 
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/01-Neural%20Networks%20and%20Deep%20Learning/week4/md_images/03.jpg)
+
 - 经过训练，神经网络第一层所做的事就是从原始图片中提取出人脸的轮廓与边缘，即边缘检测。这样每个神经元得到的是一些边缘信息。
 - 神经网络第二层所做的事情就是将前一层的边缘进行组合，组合成人脸一些局部特征，比如眼睛、鼻子、嘴巴等。
 - 再往后面，就将这些局部特征组合起来，融合成人脸的模样。
 
 可以看出，随着层数由浅到深，神经网络提取的特征也是从边缘到局部特征到整体，由简单到复杂。可见，如果隐藏层足够多，那么能够提取的特征就越丰富、越复杂，模型的准确率就会越高。
-
-![](03)
 
 神经网络从左到右，神经元提取的特征从简单到复杂。特征复杂度与神经网络层数成正相关。特征越来越复杂，功能也越来越强大。
 
