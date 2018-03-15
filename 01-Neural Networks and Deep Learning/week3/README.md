@@ -74,7 +74,7 @@ $$z_4^{[1]}=w_4^{[1]T}x+b_4^{[1]},\ a_4^{[1]}=\sigma(z_4^{[1]})$$
 
 $$z_1^{[2]}=w_1^{[2]T}a^{[1]}+b_1^{[2]},\ a_1^{[2]}=\sigma(z_1^{[2]})$$
 
-其中 $a^{[1]}$为：
+其中 $a^{[1]}$为列向量：
 
 $$\boldsymbol{a^{[1]}}= \left[ \begin{matrix} a_1^{[1]} \\ a_2^{[1]} \\ a_3^{[1]} \\ a_4^{[1]} \end{matrix} \right]$$
 
@@ -98,15 +98,7 @@ $$a^{[2]}=\sigma(z^{[2]})$$
 
 之前我们也介绍过，在书写标记上用上标$(i)$表示第$i$个样本，例如 $x^{(i)}$， $z^{(i)}$， $a^{[2](i)}$。对于每个样本i，可以使用for循环来求解其正向输出：
 
-$for\ i = 1\ to\ m: $
-
-$\ \ \ \ z^{[1](i)}=W^{[1]}x^{(i)}+b^{[1]} \ \ \ \ a^{[2](i)}=\sigma(z^{[2](i)}) $
-
-$\ \ \ \ a^{[1](i)}=\sigma(z^{[1](i)}) $
-
-$\ \ \ \ z^{[2](i)}=W^{[2]}a^{[1](i)}+b^{[2]} $
-
-$\ \ \ \ a^{[2](i)}=\sigma(z^{[2](i)}) $
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/01-Neural%20Networks%20and%20Deep%20Learning/week3/md_images/07.png)
 
 不使用for循环，利用矩阵运算的思想，输入矩阵X的维度为$(n_x,m)$。这样，我们可以把上面的for循环写成矩阵运算的形式：
 
