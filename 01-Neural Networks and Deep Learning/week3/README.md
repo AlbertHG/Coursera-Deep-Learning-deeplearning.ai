@@ -76,7 +76,7 @@ $$z_1^{[2]}=w_1^{[2]T}a^{[1]}+b_1^{[2]},\ a_1^{[2]}=\sigma(z_1^{[2]})$$
 
 其中 $a^{[1]}$为列向量：
 
-$$\boldsymbol{a^{[1]}}= \left[ \begin{matrix} a_1^{[1]} \\ a_2^{[1]} \\ a_3^{[1]} \\ a_4^{[1]} \end{matrix} \right]$$
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/01-Neural%20Networks%20and%20Deep%20Learning/week3/md_images/08.png)
 
 上述每个节点的计算都对应着一次逻辑运算的过程，分别由计算$z$和$a$两部分组成。
 
@@ -96,7 +96,7 @@ $$a^{[2]}=\sigma(z^{[2]})$$
 
 上一部分我们只是介绍了单个样本的神经网络正向传播矩阵运算过程。而对于$m$个训练样本，我们也可以使用矩阵相乘的形式来提高计算效率。而且它的形式与上一部分单个样本的矩阵运算十分相似，比较简单。
 
-之前我们也介绍过，在书写标记上用上标$(i)$表示第$i$个样本，例如 $x^{(i)}$， $z^{(i)}$， $a^{[2](i)}$。对于每个样本i，可以使用for循环来求解其正向输出：
+之前我们也介绍过，在书写标记上用上标$(i)$表示第$i$个样本，例如 $x^{(i)}$， $z^{(i)}$， $a^{[2](i)}$。对于每个样本$i$，可以使用for循环来求解其正向输出：
 
 ![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/01-Neural%20Networks%20and%20Deep%20Learning/week3/md_images/07.png)
 
