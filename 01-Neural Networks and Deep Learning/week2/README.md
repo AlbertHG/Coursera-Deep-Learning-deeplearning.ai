@@ -8,7 +8,7 @@ datasets | 本周编程作业数据集，由于GitHub单文件大小限制，因
 images |  编程作业里边的一些图片源文件
 md_images |  README.md内的图片源文件
 answer-Python Basics with Numpy.ipynb |  本周第1个编程作业文件（内含答案）
-answer-Logistic Regression with a Neural Network  
+answer-Logistic Regression with a Neural Network  |  本周第2个编程作业文件（内含答案）
 lr_utils.py |  编程作业需要使用的py文件   
 Logistic Regression with a Neural Network mindset.ipynb |  本周第2个编程作业文件（无答案）
 Python Basics with Numpy.ipynb |  本周第1个编程作业文件（无答案）
@@ -46,7 +46,7 @@ Logistic 回归中使用的参数如下：
 
 Logistic 回归可以看作是一个非常小的神经网络。下图是一个典型例子：
 
-![](01)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/01-Neural%20Networks%20and%20Deep%20Learning/week2/md_images/01.png)
 
 ## Logistic 回归的损失函数
 
@@ -72,7 +72,8 @@ $$J(w,b) = \frac{1}{m}\sum_{i=1}^mL(\hat{y}^{(i)},y^{(i)})$$
 
 模型的训练目标即是寻找合适的 $w$与 $b$ 以最小化代价函数值。简单起见我们先假设$ w$与 $b$ 都是一维实数，那么可以得到如下的 $J$ 关于$ w $与$ b $的图：
 
-![](02)
+
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/01-Neural%20Networks%20and%20Deep%20Learning/week2/md_images/02.png)
 
 可以看到，成本函数 $J$ 是一个 **凸函数** ，与非凸函数的区别在于其不含有多个局部最低点；选择这样的代价函数就保证了无论我们初始化模型参数如何，都能够寻找到合适的最优解。
 
@@ -94,7 +95,8 @@ $$b := b - \alpha\frac{dJ(w, b)}{db}$$
 
 假设输入的特征向量维度为 2，即输入参数共有 $x_1, w_1, x_2, w_2, b$ 这五个。可以推导出如下的计算图：
 
-![](03)
+
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/01-Neural%20Networks%20and%20Deep%20Learning/week2/md_images/03.png)
 
 首先反向求出 $L$ 对于 $a$ 的导数：
 
@@ -175,6 +177,7 @@ Numpy 的 Universal functions 中要求输入的数组 shape 是一致的。当�
 
 简而言之，就是python中可以对不同维度的矩阵进行四则混合运算，但至少保证有一个维度是相同的。下面给出几个广播的例子，具体细节可参阅python的相关手册。
 
-![](04)
+
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/01-Neural%20Networks%20and%20Deep%20Learning/week2/md_images/04.jpg)
 
 值得一提的是，在python程序中为了保证矩阵运算正确，可以使用reshape()函数来对矩阵设定所需的维度。这是一个很好且有用的习惯。
