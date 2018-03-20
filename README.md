@@ -35,7 +35,6 @@
 * [红色石头的机器学习之路](https://zhuanlan.zhihu.com/Redstone)
 * [机器学习之路](https://zhuanlan.zhihu.com/koalatree)
 * [KyonHuang-吴恩达《深度学习》系列课程笔记](http://kyonhuang.top/Andrew-Ng-Deep-Learning-notes/#/)
-* [Coursera深度学习课程笔记](https://zhuanlan.zhihu.com/p/31826031)
 
 ### 备注
 
