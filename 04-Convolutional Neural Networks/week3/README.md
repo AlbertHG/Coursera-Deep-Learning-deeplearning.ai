@@ -15,7 +15,7 @@
    * [非极大值抑制(Non-max suppression)](#非极大值抑制non-max-suppression)
    * [Anchor Boxes](#anchor-boxes)
    * [YOLO 算法(Putting it together: YOLO algorithm)](#yolo-算法putting-it-together-yolo-algorithm)
-   * [候选区域(选修)(Region proposals (Optional))](#候选区域选修-region-proposals-optional)
+   * [候选区域(选修)(Region proposals (Optional))](#候选区域选修region-proposals-optional)
 
 ## 目标定位(Object localization)
 
