@@ -272,7 +272,7 @@ R-CNN（Regions with convolutional networks），会在我们的图片中选出�
 
 参考文献：
 
-Joseph Redmon, Santosh Divvala, Ross Girshick, Ali Farhadi - [You Only Look Once: Unified, Real-Time Object Detection (2015)](#https://arxiv.org/abs/1506.02640)
-Joseph Redmon, Ali Farhadi - [YOLO9000: Better, Faster, Stronger (2016)](#https://arxiv.org/abs/1612.08242)
-Allan Zelener - YAD2K: [Yet Another Darknet 2 Keras](#https://github.com/allanzelener/YAD2K)
-The official YOLO website (https://pjreddie.com/darknet/yolo/)
+[Joseph Redmon, Santosh Divvala, Ross Girshick, Ali Farhadi - You Only Look Once: Unified, Real-Time Object Detection (2015)](https://arxiv.org/abs/1506.02640)
+[Joseph Redmon, Ali Farhadi - YOLO9000: Better, Faster, Stronger (2016)](https://arxiv.org/abs/1612.08242)
+[Allan Zelener - YAD2K: Yet Another Darknet 2 Keras](https://github.com/allanzelener/YAD2K)
+[The official YOLO website] (https://pjreddie.com/darknet/yolo/)
