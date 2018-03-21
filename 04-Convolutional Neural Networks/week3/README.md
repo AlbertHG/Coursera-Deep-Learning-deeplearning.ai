@@ -128,8 +128,8 @@ YOLO算法首先将原始图片分割成n x n网格，每个网格代表一块�
 ![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/week3/md_images/08.jpg)
 
 然后，利用上一节卷积形式实现滑动窗口算法的思想，对该原始图片构建CNN网络，得到的的输出层维度为3 x 3 x 8。其中，3 x 3对应9个网格，每个网格的输出包含8个元素：
-
-$$y=\left [ \begin{matrix} P_c \\ b_x \\ b_y \\ b_h \\ b_w \\ c_1 \\ c_2 \\ c_3 \end{matrix} \right ]$$
+$$y=\left[\begin{matrix}P\_c\\\ b\_x\\\ b\_y\\\ b\_h\\\ b\_w\\\ c\_1\\\ c\_2\\\ c\_3\end{matrix}\right]
+$$
 
 如果目标中心坐标 $(b_x,b_y)$ 不在当前网格内，则当前网格Pc=0；相反，则当前网格$P_c=1$（即只看中心坐标是否在当前网格内）。判断有目标的网格中， $b_x,b_y,b_h,b_w$ 限定了目标区域。
 
@@ -158,7 +158,7 @@ $IoU=\frac{I}{U}$
 
 IoU可以表示任意两块区域的接近程度。IoU值介于0～1之间，且越接近1表示两块区域越接近。
 
-一般在目标检测任务中，约定如果 $IoU\geqslant0.5$ ，那么就说明检测正确。当然标准越大，则对目标检测算法越严格。得到的IoU值越大越好。
+一般在目标检测任务中，约定如果 $IoU>=0.5$ ，那么就说明检测正确。当然标准越大，则对目标检测算法越严格。得到的IoU值越大越好。
 
 ## 非极大值抑制(Non-max suppression)
 
@@ -172,7 +172,7 @@ IoU可以表示任意两块区域的接近程度。IoU值介于0～1之间，且
 
 ![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/week3/md_images/11.jpg)
 
-- 算法首先审视每一个概率高（$P_c\geqslant0.6$）的格子，在上图中，分别由5个格子表示检测出车子的概率很高，分别是0.8、0.7、0.9、0.6、0.7。
+- 算法首先审视每一个概率高（$P_c>=0.6$）的格子，在上图中，分别由5个格子表示检测出车子的概率很高，分别是0.8、0.7、0.9、0.6、0.7。
 - 首先看概率最大的，这里是0.9，，然后将剩下的4个格子分别和0.9的这个格子做交并比计算，发现右边为0.6和0.7的两个格子和0.9的交并比很大，则将这两个格子抑制（舍弃）。
 - 接下来，再次审视剩下的格子（0.8，0.7），找出概率最大的那一个，这里是0.8，然后再次将该格子和剩下的格子（0.7）进行交并比计算，舍弃掉交并比很大的格子，这里剩下的0.7被舍弃。
 - 最后剩下左边的0.8和右边的0.9两个格子。
