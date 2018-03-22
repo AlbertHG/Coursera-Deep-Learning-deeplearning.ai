@@ -206,6 +206,10 @@ $$a^{[l+2]} = g(a^{[l]}) = ReLU(a^{[l]}) = a^{[l]}$$
 如果你理解了 Inception 模块，你就能理解 Inception 网络，无非是很多
 个 Inception 模块一环接一环，最后组成了网络。
 
+*大图展示如下：*
+
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/week2/md_images/21.png)
+
 ## 使用开源的实现方案
 
 开发一个计算机视觉应用，一个常见的工作流程是，先选择一个喜欢的架构，或许是在这门课中学习到的，或者是你从朋友那听说的，或者是从文献中看到的，接着寻找一个开源实，从 GitHub 下载下来，以此基础开始构建。这样做的优点在于，这些网络通常都需要很长的时间来训练，而或许有人已经使用多个 GPU，通过庞大的数据集预先训练了这些网络，这样一来你就可以使用这些网络进行迁移学习。
