@@ -253,7 +253,7 @@ Anchor box 的选择：
 3. 运行非最大值抑制（NMS）(为展示效果，换一张复杂的图)：
 
     - （编号1）假设使用了2个Anchor box，那么对于每一个网格，我们都会得到预测输出的2个bounding boxes，其中一个$P_c$比较高；
-    - （编号2）抛弃概率 %P_c% 值低的预测bounding boxes；
+    - （编号2）抛弃概率%P_c%值低的预测bounding boxes；
     - （编号3）对每个对象（如行人、汽车、摩托车）分别使用NMS算法得到最终的预测边界框。
 
 ![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/week3/md_images/16.png)
