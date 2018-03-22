@@ -232,10 +232,12 @@ Anchor box 的选择：
 假设我们要在图片中检测三种目标：行人、汽车和摩托车，同时使用两种不同的Anchor box。
 
 1. 构造训练集：
+
     - 根据工程目标，将训练集做如下规划。
     - 输入X：同样大小的完整图片；
     - 目标Y：使用 $3\times3$ 网格划分，输出大小 $3\times3\times2\times8$(其中3 × 3表示3×3个网格，2是anchor box的数量，8是向量维度) ，或者 $3\times3\times16$。
     - 对不同格子中的小图，定义目标输出向量Y，如下图示例。
+    
         - 对于格子1的目标y就是这样的$y = \left[ 0\ ?\ ?\ ?\ ?\ ?\ ?\ ?\ 0\ ?\ ?\ ?\ ?\ ?\ ?\ ?\right]^T$。
         - 而对于格子2的目标y则应该是这样：$y = \left[ 0\ ?\ ?\ ?\ ?\ ?\ ?\ ?\ 1\ b_{x}\ b_{y}\ b_{h}\ b_{w}\ 0\ 1\ 0\right]^T$。
         - 训练集中，对于车子有这样一个边界框（编号3），水平方向更长一点。所以如果这是你的anchor box，这是anchor box 1（编号4），这是anchor box 2（编号5），然后红框和anchor box 2的交并比更高，那么车子就和向量的下半部分相关。要注意，这里和anchor box 1有关的$P_c$是0，剩下这些分量都是don’t care-s，然后你的第二个 ，然后你要用这些($b_x,b_y,b_h,b_w$)来指定红边界框的位置
@@ -243,14 +245,17 @@ Anchor box 的选择：
 ![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/week3/md_images/14.png)
 
 2. 模型预测：
+
     - 输入与训练集中相同大小的图片，同时得到每个格子中不同的输出结果： $3\times3\times2\times8$ 。
     - 输出的预测值，以下图为例：
+    
         - 对于左上的格子（编号1）对应输出预测y（编号3）
         - 对于中下的格子（编号2）对应输出预测y（编号4）
 
 ![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/week3/md_images/15.png)
 
 3. 运行非最大值抑制（NMS）(为展示效果，换一张复杂的图)：
+
     - （编号1）假设使用了2个Anchor box，那么对于每一个网格，我们都会得到预测输出的2个bounding boxes，其中一个$P_c$比较高；
     - （编号2）抛弃概率 %P_c% 值低的预测bounding boxes；
     - （编号3）对每个对象（如行人、汽车、摩托车）分别使用NMS算法得到最终的预测边界框。
