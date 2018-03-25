@@ -83,7 +83,7 @@ $$d(x^{(1)},x^{(2)})=||f(x^{(1)})-f(x^{(2)})||^2$$
 - 若 $x^{(i)}$ ， $x^{(j)}$ 是同一个人，则 $||f(x^{(1)})-f(x^{(2)})||^2$ 较小
 - 若 $x^{(i)}$ ， $x^{(j)}$ 不是同一个人，则 $||f(x^{(1)})-f(x^{(2)})||^2$ 较大
 
-*详情参见DeepFace论文：Yaniv Taigman, Ming Yang, Marc'Aurelio Ranzato, Lior Wolf (2014).[DeepFace: Closing the gap to human-level performance in face verification](https://research.fb.com/wp-content/uploads/2016/11/deepface-closing-the-gap-to-human-level-performance-in-face-verification.pdf)*
+*详情参见DeepFace论文：[Yaniv Taigman, Ming Yang, Marc'Aurelio Ranzato, Lior Wolf (2014).DeepFace: Closing the gap to human-level performance in face verification](https://research.fb.com/wp-content/uploads/2016/11/deepface-closing-the-gap-to-human-level-performance-in-face-verification.pdf)*
 
 ## Triplet 损失(Triplet Loss)
 
@@ -239,7 +239,8 @@ $$J(G)=\alpha \cdot J_{content}(C,G)+\beta \cdot J_{style}(S,G)$$
 使用的CNN网络是之前训练好的模型，例如Alex-Net。$C$，$S$，$G$共用相同模型和参数。首先，需要选择合适的层数$l$来计算 $J_{content}(C,G)$ 。
 
 - 如果 $l$ 太小，则$G$与$C$在像素上会非常接近，没有迁移效果；
-- 如果 $l$ 太深，则$G$上某个区域将直接会出现$C$中的物体。因此， $l$ 既不能太浅也不能太深，一般选择网络中间层。
+- 如果 $l$ 太深，则$G$上某个区域将直接会出现$C$中的物体。
+- 因此， $l$ 既不能太浅也不能太深，一般选择网络中间层。
 
 我们令$a^{[l] (C)}$这个和$a^{[l] (G)}$，代表这两个图片$C$和$G$的层的激活函数值。如果这两个激活值相似，那么就意味着两个图片的内容相似
 
@@ -288,7 +289,7 @@ $$G_{kk'}^{[l] (G)} = \sum\limits_{i=1}^{n_{h}^{[l]}}\sum\limits_{j=1}^{n_{w}^{[
 
 $$J_{style}^{[l]}(S, G) = \dfrac{1}{2n_{h}^{[l]}n_{w}^{[l]}n_{c}^{[l]}}||G^{[l] (S)} - G^{[l] (G)} ||\_{F}^{2} = \dfrac{1}{2n_{h}^{[l]}n_{w}^{[l]}n_{c}^{[l]}}\sum_{k}\sum_{k'}(G_{kk'}^{[l] (S)} - G_{kk'}^{[l] (G)})^{2}$$
 
-这将得到这两个矩阵之间的误差，因为它们是矩阵，所以在这里加一个F（Frobenius范数），这实际上是计算两个矩阵对应元素相减的平方的和，我们把这个式子展开，从$k$和$k'$开始作它们的差，把对应的式子写下来，然后把得到的结果都加起来，然后乘以一个归一化常数$\dfrac{1}{2n^{[l]}_{h}n^{[l]}_{w}n^{[l]}_{c}}$，再在外面加一个平方。*但是一般情况下你不用写这么多，一般我们只要将它乘以一个超参数$β$就行* 。
+这将得到这两个矩阵之间的误差，因为它们是矩阵，所以在这里加一个F（Frobenius范数），这实际上是计算两个矩阵对应元素相减的平方的和，我们把这个式子展开，从$k$和$k'$开始作它们的差，把对应的式子写下来，然后把得到的结果都加起来，然后乘以一个归一化常数$\dfrac{1}{2n_{h}^{[l]}n_{w}^{[l]}n_{c}^{[l]}}$，再在外面加一个平方。*但是一般情况下你不用写这么多，一般我们只要将它乘以一个超参数$β$就行* 。
 
 定义完 $J_{style}(S,G)^{[l]}$ 之后，我们的目标就是使用梯度下降算法，不断迭代修正$G$的像素值，使 $J_{style}(S,G)^{[l]}$ 不断减小。
 
