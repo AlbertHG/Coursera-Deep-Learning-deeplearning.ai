@@ -275,9 +275,9 @@ $$G_{kk'}^{[l]}=\sum_{i=1}^{n_H^{[l]}}\sum_{j=1}^{n_W^{[l]}}a_{ijk}^{[l]}a_{ijk'
 
 因此，可以得出下列两条公式，分别代表同时对风格图$S$和生成图像$G$进行运算得到的输出和：
 
-$$G_{kk'}^{[l] (S)} = \sum\limits_{i=1}^{n_{h}^{[l]}}\sum\limits_{j=1}^{n_{w}^{[l]}}a^{[l] (S)}_{i,j,k}a^{[l](S)}_{i,j,k'}$$
+$$G_{kk'}^{[l] (S)} = \sum\limits_{i=1}^{n_{h}^{[l]}}\sum\limits_{j=1}^{n_{w}^{[l]}}a_{i,j,k}^{[l] (S)}a_{i,j,k'}^{[l](S)}$$
 
-$$G_{kk'}^{[l] (G)} = \sum\limits_{i=1}^{n_{h}^{[l]}}\sum\limits_{j=1}^{n_{w}^{[l]}}a^{[l] (G)}_{i,j,k}a^{[l] (G)}_{i,j,k'}$$
+$$G_{kk'}^{[l] (G)} = \sum\limits_{i=1}^{n_{h}^{[l]}}\sum\limits_{j=1}^{n_{w}^{[l]}}a_{i,j,k}^{[l] (G)}a_{i,j,k'}^{[l] (G)}$$
 
 - 风格矩阵 $G_{kk'}^{[l] (S)}$ 表征了风格图片$S$第 $l$ 层隐藏层的“风格”。
 - 相应地，生成图片$G$也有  $G_{kk'}^{[l] (G)}$ 。
