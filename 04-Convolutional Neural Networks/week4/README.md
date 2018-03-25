@@ -58,7 +58,7 @@ Similarity 函数：
     - 如果 $d(img1, img2) \leqslant \tau$ ，则输出“$same$”;
     - 如果 $d(img1, img2) > \tau$ ，则输出“$different$”.
 
-![](01)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/week4/md_images/01.jpg)
 
 对于人脸识别系统，通过将输入的人脸图片与数据库中所拥有的图片成对输入Similarity函数，两两对比，则可解决one shot problem。如果有新的人加入团队，则只需将其图片添加至数据库即可。
 
@@ -70,7 +70,7 @@ Similarity 函数：
 
 *简单理解就是普通CNN去掉最后的softmax层*
 
-![](02)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/week4/md_images/02.jpg)
 
 上图中，两幅图片的编码分别用$f(x^{(1)})$，$f(x^{(2)})$表示。
 
@@ -93,7 +93,7 @@ $$d(x^{(1)},x^{(2)})=||f(x^{(1)})-f(x^{(2)})||^2$$
 
 为了使用Triplet 损失函数，我们需要比较成对的图像（三元组术语），Triplet Loss需要每个样本包含三张图片：靶目标（Anchor）、正例（Positive）、反例（Negative）：
 
-![](03)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/week4/md_images/03.jpg)
 
 - Anchor （A）： 目标图片；
 - Positive（P）：与Anchor 属于同一个人的图片；
@@ -125,7 +125,7 @@ $$L(A,P,N) = \max (||f(A) - f(P)||^{2} - ||f(A) - f(N)||^{2} + \alpha, \ 0)$$
 
 这个max函数的作用就是，只要这个$||f(A) - f(P)||^{2} - ||f(A) - f(N)||^{2} + \alpha \leqslant 0$，那么损失函数就是0。只要你能使画绿色下划线部分小于等于0，只要你能达到这个目标，那么这个例子的损失就是0。
 
-![](04)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/week4/md_images/04.png)
 
 3. 相应地，对于$m$组训练样本，cost function为：
 
@@ -150,7 +150,7 @@ $$d(A,P) \approx d(A,N)$$
 
 下面给出一些A，P，N的例子：
 
-![](05)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/week4/md_images/05.jpg)
 
 总结就是，通过将anchor图片和positive图片和negative图片组成一个个三元组，然后通过Triplet 损失函数不断训练网络，让代价函数$J$不断变小，最后让网络学习到一种编码，使得如果两个图片是同一个人，那么它们的$d$就会很小，如果两个图片不是同一个人，它们的$d$就会很大。
 
@@ -160,7 +160,7 @@ $$d(A,P) \approx d(A,N)$$
 
 除了构造triplet loss来解决人脸识别问题之外，还可以使用二分类结构。做法是将两个siamese网络组合在一起，将各自的编码层输出经过一个逻辑输出单元，该神经元使用sigmoid函数，输出 1 则表示识别为同一人，输出 0 则表示识别为不同人。结构如下：
 
-![](06)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/week4/md_images/06.jpg)
 
 每组训练样本包含两张图片，每个siamese网络结构和参数完全相同。这样就把人脸识别问题转化成了一个二分类问题。引入逻辑输出层参数$w$和$b$，输出 $\hat y$ 表达式为：
 
@@ -182,7 +182,7 @@ $$\hat y=\sigma(\sum_{k=1}^Kw_k\frac{(f(x^{(i)})\_k-f(x^{(j)})\_k)^2}{f(x^{(i)})
 
 为了描述如何实现神经网络迁移，我将使用来$C$表示内容图像，$S$表示风格图像，$G$表示生成的图像.
 
-![](07)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/week4/md_images/07.jpg)
 
 ## 什么是深度卷积网络？(What are deep ConvNets learning?)
 
@@ -190,7 +190,7 @@ $$\hat y=\sigma(\sum_{k=1}^Kw_k\frac{(f(x^{(i)})\_k-f(x^{(j)})\_k)^2}{f(x^{(i)})
 
 典型的CNN网络如下所示：
 
-![](08)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/week4/md_images/08.jpg)
 
 我们希望看到不同层的隐藏单元的计算结果。依次对各个层进行如下操作：
 
@@ -200,13 +200,13 @@ $$\hat y=\sigma(\sum_{k=1}^Kw_k\frac{(f(x^{(i)})\_k-f(x^{(j)})\_k)^2}{f(x^{(i)})
 
 首先来看第一层隐藏层，遍历所有训练样本，找出让该层激活函数输出最大的9块图像区域；然后再找出该层的其它单元（不同的滤波器通道）激活函数输出最大的9块图像区域；最后共找9次，得到9 x 9的图像如下所示，其中每个3 x 3区域表示一个运算单元。
 
-![](09)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/week4/md_images/09.jpg)
 
 可以看出，第一层隐藏层一般检测的是原始图像的边缘和颜色阴影等简单信息。
 
 继续看CNN的更深隐藏层，随着层数的增加，捕捉的区域更大，特征更加复杂，从边缘到纹理再到具体物体.
 
-![](10)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/week4/md_images/10.jpg)
 
 *详情见论文：[Zeiler and Fergus.,2013,Visualizing and Understanding Convolutional Networks](https://link.springer.com/chapter/10.1007/978-3-319-10590-1_53)*
 
@@ -220,7 +220,7 @@ $$\hat y=\sigma(\sum_{k=1}^Kw_k\frac{(f(x^{(i)})\_k-f(x^{(j)})\_k)^2}{f(x^{(i)})
 
 $$J(G)=\alpha \cdot J_{content}(C,G)+\beta \cdot J_{style}(S,G)$$
 
-![](11)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/week4/md_images/11.jpg)
 
 - $J_{content}(C, G)$  代表生成图片$G$的内容和内容图片$C$的内容的相似度；
 - $J_{style}(S,G)$ 代表生成图片$G$的内容和风格图片$S$的内容的相似度；
@@ -228,7 +228,7 @@ $$J(G)=\alpha \cdot J_{content}(C,G)+\beta \cdot J_{style}(S,G)$$
 
 神经风格迁移的基本算法流程是：首先令$G$为随机像素点，然后使用梯度下降算法，不断修正$G$的所有像素点，使得 $J(G)$ 不断减小，从而使$G$逐渐有$C$的内容和$G$的风格，如下图所示。
 
-![](12)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/week4/md_images/12.jpg)
 
 *神经风格迁移算法是基于Leon Gatys， Alexandra Ecker和Matthias Bethge的这篇论文：[Leon A. Gatys, Alexander S. Ecker, Matthias Bethge, (2015). A Neural Algorithm of Artistic Style](https://arxiv.org/abs/1508.06576)*
 
@@ -255,13 +255,13 @@ $a^{[l](C)}$ 与$ a^{[l](G)} $越相似，则 $J_{content}(C,G)$ 越小。方法
 
 首先，什么是图片间的风格：利用CNN网络模型，图片的风格可以定义成第 $l$ 层隐藏层不同通道间激活函数的乘积（相关性）
 
-![](13)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/week4/md_images/13.jpg)
 
 例如我们选取第 $l$ 层隐藏层，其各通道使用不同颜色标注，如下图所示。因为每个通道提取图片的特征不同，比如 1 通道（红色）提取的是图片的垂直纹理特征，2 通道（黄色）提取的是图片的橙色背景特征。而相关性大小的含义就是，如假设中，图片出现垂直纹理特征的区域显示橙色可能的大小。
 
 也就是说，计算不同通道的相关性，反映了原始图片特征间的相互关系，从某种程度上刻画了图片的“风格”。
 
-![](14)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/week4/md_images/14.jpg)
 
 现在，定义图片的风格矩阵（style matrix）为：
 
@@ -302,15 +302,13 @@ $$J_{style}(S,G)=\sum_l\lambda^{[l]}\cdot J^{[l]}_{style}(S,G)$$
 
 $$J(G)=\alpha \cdot J_{content}(C,G)+\beta \cdot J_{style}(S,G)$$
 
-
-
 ## 一维到三维推广(1D and 3D generalizations of models)
 
 在我们上面学过的卷积中，多数是对图形应用2D的卷积运算。同时，我们所应用的卷积运算还可以推广到1D和3D的情况。
 
 1. 首先介绍2D卷积的规则：
 
-![](15)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/week4/md_images/15.jpg)
 
 - 输入图片维度：14 x 14 x 3
 - 滤波器尺寸：5 x 5 x 3，滤波器个数：16
@@ -318,13 +316,15 @@ $$J(G)=\alpha \cdot J_{content}(C,G)+\beta \cdot J_{style}(S,G)$$
 
 2. 将2D卷积推广到1D卷积，举例来介绍1D卷积的规则：
 
-![](16)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/week4/md_images/16.jpg)
 
 - 输入时间序列维度：14 x 1
 - 滤波器尺寸：5 x 1，滤波器个数：16
 - 输出时间序列维度：10 x 16
 
 3. 对于3D卷积，举例来介绍其规则：
+
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/04-Convolutional%20Neural%20Networks/week4/md_images/17.jpg)
 
 - 输入3D图片维度：14 x 14 x 14 x 1
 - 滤波器尺寸：5 x 5 x 5 x 1，滤波器个数：16

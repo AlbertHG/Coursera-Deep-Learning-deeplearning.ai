@@ -19,8 +19,8 @@
     - [卷积神经网络基础](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/tree/master/04-Convolutional%20Neural%20Networks/week1)
     - [深度卷积网络：实例探究](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/tree/master/04-Convolutional%20Neural%20Networks/week2)
     - [目标检测](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/tree/master/04-Convolutional%20Neural%20Networks/week3)
-    - [特殊应用：人脸识别和神经风格转换(未完待续)](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/tree/master/04-Convolutional%20Neural%20Networks/week4)
-- [序列模型(未完待续)](https://www.google.com)
+    - [特殊应用：人脸识别和神经风格转换](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/tree/master/04-Convolutional%20Neural%20Networks/week4)
+- [序列模型(未完待续)](http://mooc.study.163.com/learn/2001280005?tid=2001391038#/learn/announce)
 
 ## 课程地址
 
