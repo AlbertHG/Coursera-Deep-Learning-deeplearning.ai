@@ -1,6 +1,4 @@
-##ignore this file or folder##
-
-*.h5
+##ignore some cache files##
 
 .ipynb_checkpoints/
 
