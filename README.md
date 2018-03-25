@@ -28,8 +28,6 @@
 
 [deeplearning.ai - 网易云课堂 - 深度学习工程师微专业](https://study.163.com/provider/2001053000/index.htm)
 
-
-
 ## 参考项目
 
 在整理自己的笔记的时候，从下列道友中参考了很多内容，谢之：
@@ -40,4 +38,6 @@
 
 ### 备注
 
-GitHub的README.md文件不提供LaTeX公式解析，可使用chrome浏览器插件[GitHub with MathJax](https://chrome.google.com/webstore/detail/github-with-mathjax/ioemnmodlmafdkllaclgeombjnmnbima)
+- GitHub的README.md文件不提供LaTeX公式解析，可使用chrome浏览器插件[GitHub with MathJax](https://chrome.google.com/webstore/detail/github-with-mathjax/ioemnmodlmafdkllaclgeombjnmnbima)
+- 由于Github中的文件大小限制规则，编程练习中缺少的数据集文件可以从对应文件夹里边的".gitignore"文件中得知，然后自行搜索下载。
+- 一些运行中的问题也会更新到对应的issue中。
