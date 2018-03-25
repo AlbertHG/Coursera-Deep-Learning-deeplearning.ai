@@ -2,12 +2,6 @@
 
 # 文件夹结构
 
-名称 | 解释
----- | ---
-KerasTutorial | 编程作业——Keras框架入门
-ResNets | 编程作业——残差神经网络
-md_images | README.md内的图片源文件
-
 # 笔记
 
 ## 目录 

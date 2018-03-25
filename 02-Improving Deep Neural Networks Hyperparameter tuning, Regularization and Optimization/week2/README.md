@@ -1,16 +1,5 @@
 <h1 align="center">第二课第二周“优化算法”</h1>
 
-# 文件夹结构
-
-名称 | 解释
----- | ---
-images |  编程作业里边的一些图片源文件
-md_images |  README.md内的图片源文件
-answer-Optimization+methods.ipynb |  本周第1个编程作业文件（内含答案）
-opt_utils.py |  编程作业需要使用的py文件
-testCases.py |  编程作业需要使用的py文件
-Optimization+methods.ipynb |  本周第1个编程作业文件（无答案）
-
 # 笔记
 
 ## 目录 

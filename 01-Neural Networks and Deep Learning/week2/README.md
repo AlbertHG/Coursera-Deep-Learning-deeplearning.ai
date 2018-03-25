@@ -1,19 +1,5 @@
 <h1 align="center">第一课第一、二周“神经网络的基础 ”</h1>
 
-# 文件夹结构
-
-名称 | 解释
----- | ---
-datasets | 本周编程作业数据集，由于GitHub单文件大小限制，因此未上传该文件夹啊，该文件夹有两个文件：“test_catvnoncat.h5”、“train_catvnoncat.h5”，可自行网上下载
-images |  编程作业里边的一些图片源文件
-md_images |  README.md内的图片源文件
-answer-Python Basics with Numpy.ipynb |  本周第1个编程作业文件（内含答案）
-answer-Logistic Regression with a Neural Network  |  本周第2个编程作业文件（内含答案）
-lr_utils.py |  编程作业需要使用的py文件   
-Logistic Regression with a Neural Network mindset.ipynb |  本周第2个编程作业文件（无答案）
-Python Basics with Numpy.ipynb |  本周第1个编程作业文件（无答案）
-
-
 # 笔记
 
 ## 目录 

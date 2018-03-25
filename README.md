@@ -4,6 +4,8 @@
 
 [网易云课堂](http://study.163.com/)提供的免费正版的课程资料，给予了我极大的帮助。
 
+*欢迎Star*
+
 ## 笔记
 
 - [神经网络与深度学习](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/tree/master/01-Neural%20Networks%20and%20Deep%20Learning)

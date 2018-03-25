@@ -1,17 +1,5 @@
 <h1 align="center">第二课第三周“超参数调试、Batch 正则化和程序框架”</h1>
 
-# 文件夹结构
-
-名称 | 解释
----- | ---
-datasets | 本周编程作业数据集，由于GitHub单文件大小限制，因此未上传该文件夹啊，该文件夹有两个文件：“test_catvnoncat.h5”、“test_signs.h5”、“test_signs_1.h5”、\n“test_signs_2.h5”、“test_signs_3.h5”、“train_catvnoncat.h5”、\n“train_signs.h5”、“train_signs_1.h5”、\n“train_signs_2.h5”、“train_signs_3.h5”，可自行网上下载
-images |  编程作业里边的一些图片源文件
-md_images |  README.md内的图片源文件
-answer-Tensorflow+Tutorial.ipynb |  本周第1个编程作业文件（内含答案）
-tf_utils.py |  编程作业需要使用的py文件
-improv_utils.py |  编程作业需要使用的py文件
-Tensorflow+Tutorial.ipynb |  本周第1个编程作业文件（无答案）
-
 # 笔记
 
 ## 目录 

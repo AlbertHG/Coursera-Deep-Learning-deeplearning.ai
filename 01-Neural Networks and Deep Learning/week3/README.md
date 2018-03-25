@@ -1,16 +1,5 @@
 <h1 align="center">第一课第三周“浅层神经网络”</h1>
 
-# 文件夹结构
-
-名称 | 解释
----- | ---
-images |  编程作业里边的一些图片源文件
-md_images |  README.md内的图片源文件
-answer-Planar data classification with one hidden layer.ipynb |  本周第1个编程作业文件（内含答案）  
-planar_utils.py |  编程作业需要使用的py文件
-testCases.py |  编程作业需要使用的py文件   
-Planar data classification with one hidden layer.ipynb |  本周第1个编程作业文件（无答案）
-
 # 笔记
 
 ## 目录 
