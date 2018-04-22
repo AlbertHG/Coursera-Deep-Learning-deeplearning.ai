@@ -100,7 +100,7 @@ $$\hat y^{⟨t⟩} = g_2(W_{ya}a^{⟨t⟩} + b_y)$$
 
 为了简化表达式，可以对 $a^{⟨t⟩}$ 项进行整合：
 
-$$W_{aa}a^{\left \langle t-1 \right \rangle} + W_{ax}x^{\left \langle t \right \rangle} = \begin{bmatrix}W_{aa},W_{ax} \end{bmatrix} \begin{bmatrix} a^{\left \langle t-1 \right \rangle}\\ x^{\left \langle t \right \rangle} \end{bmatrix} \rightarrow W_a \begin{bmatrix}a^{\left \langle t-1 \right \rangle},x^{\left \langle t \right \rangle} \end{bmatrix}
+$$W_{aa}a^{\left \langle t-1 \right \rangle} + W_{ax}x^{\left \langle t \right \rangle} = \begin{bmatrix}W_{aa},W_{ax} \end{bmatrix} \begin{bmatrix} a^{\left \langle t-1 \right \rangle}\ x^{\left \langle t \right \rangle} \end{bmatrix}^T \rightarrow W_a \begin{bmatrix}a^{\left \langle t-1 \right \rangle},x^{\left \langle t \right \rangle} \end{bmatrix}
 $$
 
 则：
@@ -114,7 +114,7 @@ $$\hat y^{⟨t⟩} = g_2(W_{y}a^{⟨t⟩} + b_y)$$
 关于维数稍微啰嗦几句：
 
 - 假如 $a^{⟨t-1⟩}$ 是 100 维， $x^{⟨t⟩}$ 是 10000 维，那么 ${W_{aa}}$ 便是 $(100,100)$ 维的矩阵， ${W_{ax}}$ 便是 $(100,10000)$ 维的矩阵。堆叠起来， $W_{a}$ 便是 $(100,10100)$ 维的矩阵。
-- $\begin{bmatrix} a^{⟨t-1⟩} \\ x^{⟨t⟩} \end{bmatrix}$：表示一个 $(10100,1)$ 维的矩阵。
+- $\begin{bmatrix} a^{⟨t-1⟩} \ x^{⟨t⟩} \end{bmatrix}^T$：表示一个 $(10100,1)$ 维的矩阵。
 
 上述是我们单独对每个cell进行公式推导，最终整个模型的公式其实就是单个cell的循环调用，下图是单个cell的具体结构图，以及前向传播的公式，非常的简洁明了 。
 
