@@ -42,7 +42,7 @@
 ### 备注
 
 - GitHub的README.md文件不提供LaTeX公式解析，可使用chrome浏览器插件[GitHub with MathJax](https://chrome.google.com/webstore/detail/github-with-mathjax/ioemnmodlmafdkllaclgeombjnmnbima)
-- 由于Github中的文件大小限制规则，编程练习中缺少的数据集文件可以从对应文件夹里边的".gitignore"文件中得知，然后自行搜索下载。
+- 由于Github中的文件大小限制规则，编程练习中缺少的数据集文件可以从对应文件夹里边的".gitignore"文件中得知，然后自行搜索下载。或者邮件联系我：hhhgggpps@gmail.com
 - 一些运行中的问题也会更新到对应的issue中。
 
 ## License
