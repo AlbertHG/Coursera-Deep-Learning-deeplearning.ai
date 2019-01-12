@@ -25,13 +25,13 @@
 
 ![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/05-Sequence%20Models/week2/md_images/01.png)
 
-这中 one-hot 表征单词的方法最大的缺点就是每个单词都是独立的、正交的，无法知道不同单词之间的相似程度。例如 apple 和 orange 都是水果，词性相近，但是单从 one-hot 编码上来看，内积为零，无法知道二者的相似性。在 NLP 中，我们更希望能掌握不同单词之间的相似程度。
+这种 one-hot 表征单词的方法最大的缺点就是每个单词都是独立的、正交的，无法知道不同单词之间的相似程度。例如 apple 和 orange 都是水果，词性相近，但是单从 one-hot 编码上来看，内积为零，无法知道二者的相似性。在 NLP 中，我们更希望能掌握不同单词之间的相似程度。
 
 词嵌入（Word Embedding）是 NLP 中语言模型与表征学习技术的统称，概念上而言，它是指把一个维数为所有词的数量的高维空间（one-hot形式表示的词）“嵌入”到一个维数低得多的连续向量空间中，每个单词或词组被映射为实数域上的向量。
 
 ![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/05-Sequence%20Models/week2/md_images/02.jpg)
 
-如上图中，各列分别组成的向量是词嵌入后获得的第一行中几个词的词向量的一部分。这些向量中的值，可代表该词与第一列中几个词的相关程度。举个例子，对于这些词，比如我们想知道这些词与 Gender（性别）的关系。假定男性的性别为 -1，女性的性别为 +1，那么 man 的性别值可能就是-1，而 woman 就是 +1。最终根据经验king就是 -0.95，queen 是+0.97，apple 和 orange没有性别可言。
+如上图中，各列分别组成的向量是词嵌入后获得的第一行中几个词的词向量的一部分。这些向量中的值，可代表该词与第一列中几个词的相关程度。举个例子，对于这些词，比如我们想知道这些词与 Gender（性别）的关系。假定男性的性别为 -1，女性的性别为 +1，那么 man 的性别值可能就是-1，而 woman 就是 +1。最终根据经验 king 就是 -0.95，queen 是+0.97，apple 和 orange 没有性别可言，故值近似于 0。
 
 特征向量的长度依情况而定，特征元素越多则对单词表征得越全面，为了说明，我们假设有300个不同的特征，这样的话就有了这一列数字（以第一列为例子），上图只写了4个，实际上是300个数字，这样就组成了一个300维的向量来表示 man 这个词。使用特征表征之后，词汇表中的每个单词都可以使用对应的 $300×1$ 的向量来表示，该向量的每个元素表示该单词对应的某个特征值。每个单词用 $e_{词汇表}$ 索引的方式标记，例如 $e_{5391},e_{9853},e_{4914},e_{7157},e_{456},e_{6257}$ 。
 
@@ -40,7 +40,6 @@
 每个单词都由高维特征向量表征，为了可视化不同单词之间的相似性，可以使用降维操作，常用的一种可视化算法是 t-SNE 算法。在通过复杂而非线性的方法映射到二维空间后，每个词会根据语义和相关程度聚在一起。例如 t-SNE 算法，将 300D 降到 2D 平面上。进而对词向量进行可视化，很明显我们可以看出对于相似的词总是聚集在一块儿：
 
 ![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/05-Sequence%20Models/week2/md_images/03.png)
-
 
 观察上图，你会发现 man 和 woman 这些词聚集在一块（上图编号1所示），king 和 queen 聚集在一块（上图编号2所示），这些都是人，也都聚集在一起（上图编号3所示）。动物都聚集在一起（上图编号4所示），水果也都聚集在一起（上图编号5所示），像1、2、3、4这些数字也聚集在一起（上图编号6所示）。如果把这些生物看成一个整体，他们也聚集在一起（上图编号7所示）。
 
@@ -52,7 +51,7 @@
 
 如果我们用特征化表示方法对每个单词进行编码，再构建该RNN模型。对于一个新的句子：Robert Lin is an apple farmerRobert Lin is an apple farmer
 
-再这两个句子中，“apple”与“orange”特征向量很接近，很容易能判断出“Robert Lin”也是一个人名。这就是特征化表示方法的优点之一。
+在这两个句子中，“apple”与“orange”特征向量很接近，很容易能判断出“Robert Lin”也是一个人名。这就是特征化表示方法的优点之一。
 
 可以看出，特征化表示方法的优点是可以减少训练样本的数目，前提是对海量单词建立词嵌入（word embedding）。这样，即使训练样本不够多，测试时遇到陌生单词，例如“durian cultivator”，根据之前海量词汇特征向量就判断出“durian”也是一种水果，与“apple”类似，而“cultivator”与“farmer”也很相似。从而得到与“durian cultivator”对应的应该也是一个人名。这种做法将单词用不同的特征来表示，即使是训练样本中没有的单词，也可以根据词嵌入的结果得到与其词性相近的单词，从而得到与该单词相近的结果，有效减少了训练样本的数量。
 
@@ -104,7 +103,7 @@ $$E \cdot O_i = e_i$$
 
 ![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/05-Sequence%20Models/week2/md_images/05.jpg)
 
-神经网络输入层包含6个嵌入向量,每个嵌入向量的维度为 300，则输入层总共有 1800 个输入。Softmax 层有 10000 个概率输出，与词汇表包含的单词数目一致。正确的输出 label 是“juice”。其中 $E,W^{[1]},b^{[1]},W^{[2]},b^{[2]}$ 为待求值。对足够的训练例句样本，运用梯度下降算法，迭代优化，最终求出嵌入矩阵 $E$。
+神经网络输入层包含6个嵌入向量,每个嵌入向量的维度为 300，则输入层总共有 1800 个输入。softmax 层有 10000 个概率输出，与词汇表包含的单词数目一致。正确的输出 label 是“juice”。其中 $E,W^{[1]},b^{[1]},W^{[2]},b^{[2]}$ 为待求值。对足够的训练例句样本，运用梯度下降算法，迭代优化，最终求出嵌入矩阵 $E$。
 
 为了让神经网络输入层数目固定，可以选择只取预测单词的前 4 个单词作为输入，例如该句中只选择“a glass of orange”四个单词作为输入。当然，这里的 4 是超参数，可调。用一个固定的历史窗口就意味着你可以处理任意长度的句子，因为输入的维度总是固定的。
 
@@ -127,7 +126,7 @@ $$E \cdot O_i = e_i$$
 
 Word2Vec 是一种简单高效的词嵌入学习算法，包括 2 种模型：
 
-- Skip-gram (SG)：根据词预测目标上下文；
+- Skip-Gram (SG)：根据词预测目标上下文；
 - Continuous Bag of Words (CBOW)：根据上下文预测目标词；
 
 在 Skip-Gram 模型中，我们要做的是抽取上下文（context）和目标词（target）配对，来构造一个监督学习问题。我们的做法是：随机选一个词作为上下文词，然后随机在一定词距内选另一个词，比如在上下文词前后5个词内或者前后10个词内选择目标词，这将是一个监督学习问题，训练一个如下图结构的网络。
@@ -140,47 +139,47 @@ Word2Vec 是一种简单高效的词嵌入学习算法，包括 2 种模型：
 
 首先随机选择一个单词作为上下文，例如“rests”；然后使用一个宽度为 5 或 10（自定义）的滑动窗，在上下文附近选择一个单词作为目标词，可以是“life”、“he”、“in”、“peace”等等。最终得到了多个“上下文—目标词对”作为监督式学习样本。
 
-一个上下文词有一个 Softmax 单元，输出以上下文词为条件下目标词出现的条件概率：
+一个上下文词有一个 softmax 单元，输出以上下文词为条件下目标词出现的条件概率：
 
 $$
-Softmax:p\left( t \middle| c \right) = \frac{e^{\theta_{t}^{T}e_{c}}}{\sum_{j = 1}^{10,000}e^{\theta_{j}^{T}e_{c}}}
+softmax:p\left( t \middle| c \right) = \frac{e^{\theta_{t}^{T}e_{c}}}{\sum_{j = 1}^{10,000}e^{\theta_{j}^{T}e_{c}}}
 $$
 
 其中，$\theta_{t}$ 为目标词对应的参数，$e_{c}$ 为上下文词的嵌入向量，且 $e_{c} = E · O_c$，$O_c$ 为上下文词的 one-hot 向量。
 
 损失函数仍选用交叉熵：
 
-$$L(\hat y, y) = -\sum^{100,000}_{i=1}y_ilog\hat y_i$$
+$$L(\hat y, y) = -\sum^{10,000}_{i=1}y_ilog\hat y_i$$
 
-通过反向传播梯度下降的训练过程，可以得到模型的参数 $E$ 和softmax的参数。
+通过反向传播梯度下降的训练过程，可以得到模型的参数 $E$ 和 softmax 的参数。
 
-然而这种算法计算量大，影响运算速度：在上面的 Softmax 单元中，我们需要对所有 10000 的所有词做求和计算，计算量庞大。解决的办法之一是使用hierarchical softmax classifier，即树形分类器。在实践中，一般采用霍夫曼树（Huffman Tree）而非平衡二叉树，常用词在顶部。
+然而这种算法计算量大，影响运算速度：在上面的 softmax 单元中，我们需要对所有 10000 的所有词做求和计算，计算量庞大。解决的办法之一是使用 hierarchical softmax classifier，即树形分类器。在实践中，一般采用霍夫曼树（Huffman Tree）而非平衡二叉树，常用词在顶部。
 
-实际上有两个不同版本的 Word2Vec 模型，skip-gram 只是其中的一个，另一个叫做 CBOW，即连续词袋模型（Continuous Bag-Of-Words Model），它获得中间词两边的的上下文，然后用周围的词去预测中间的词，这个模型也很有效，也有一些优点和缺点。
+实际上有两个不同版本的 Word2Vec 模型，Skip-Gram 只是其中的一个，另一个叫做 CBOW，即连续词袋模型（Continuous Bag-Of-Words Model），它获得中间词两边的的上下文，然后用周围的词去预测中间的词，这个模型也很有效，也有一些优点和缺点。
 
-总结下：CBOW是从原始语句推测目标字词；而 skip-gram 正好相反，是从目标字词推测出原始语句。CBOW对小型数据库比较合适，而skip-gram在大型语料中表现更好。 
+总结下：CBOW 是从原始语句推测目标字词；而 Skip-Gram 正好相反，是从目标字词推测出原始语句。CBOW 对小型数据库比较合适，而 Skip-Gram 在大型语料中表现更好。
 
 相关论文：[Mikolov et. al., 2013. Efficient estimation of word representations in vector space.](https://arxiv.org/pdf/1301.3781.pdf)
 
 ## 负采样
 
-为了解决 Softmax 计算较慢的问题，Word2Vec 的作者后续提出了负采样（Negative Sampling）模型。这个算法中要做的是构造一个新的监督学习问题：给定一对单词，比如 orange 和 juice，然后来预测这是否是一对上下文词-目标词（context-target）。
+为了解决 softmax 计算较慢的问题，Word2Vec 的作者后续提出了负采样（Negative Sampling）模型。这个算法中要做的是构造一个新的监督学习问题：给定一对单词，比如 orange 和 juice，然后来预测这是否是一对上下文词-目标词（context-target）。
 
-训练过程中，如下图所示，从语料库中选定“上下文词-目标词对”，并将标签设置为 1。另外任取 $k$ 对非“上下文词-目标词对”，作为负样本，标签设置为 0。（若只有较少的训练数据，$k$ 的值取 5~20，能达到比较好的效果；若拥有大量训练数据，$k$ 的取值取 2~5 较为合适。）
+训练过程中，如下图所示，从语料库中选定“上下文词-目标词对”，并将标签设置为 1。另外任取 $k$ 对非“上下文词-目标词对”，作为负样本，标签设置为 0。（若只有较少的训练数据，$k$ 的值取 5-20，能达到比较好的效果；若拥有大量训练数据，$k$ 的取值取 2-5 较为合适。）
 
 ![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/05-Sequence%20Models/week2/md_images/07.png)
 
-原网络中的 Softmax 变成多个 Sigmoid 单元输出$上下文-目标词对$ $(c, t)$ 为正样本 $(y=1)$ 的概率：
+原网络中的 softmax 变成多个 sigmoid 单元输出$上下文-目标词对$ $(c, t)$ 为正样本 $(y=1)$ 的概率：
 
 $$P(y=1 | c, t) = \sigma(\theta_t^Te_c)$$
 
 其中，$θ_t$、$e_c$ 分别代表目标词和上下文词的词向量。通过这种方法将之前的一个复杂的多分类问题变成了多个简单的二分类问题，而降低计算成本。
 
-之前训练中每次要更新 $n$ 维的多分类 Softmax 单元（$n$ 为词典中词的数量）。现在每次只需要更新 $k+1$ 维的二分类 Sigmoid 单元，计算量大大降低。
+之前训练中每次要更新 $n$ 维的多分类 softmax 单元（$n$ 为词典中词的数量）。现在每次只需要更新 $k+1$ 维的二分类 sigmoid 单元，计算量大大降低。
 
-在选定了上下文（Content）后，在确定正样本的情况下，我们还需要选择$k$个负样本以训练每个上下文的分类器。
+在选定了上下文（Content）后，在确定正样本的情况下，我们还需要选择 $k$ 个负样本以训练每个上下文的分类器。
 
-- 通过单词出现的频率进行采样：导致一些类似a、the、of等词的频率较高；
+- 通过单词出现的频率进行采样：导致一些类似 a、the、of 等词的频率较高；
 - 均匀随机地抽取负样本：没有很好的代表性；
 
 关于计算选择某个词作为负样本的概率，作者推荐采用以下公式（而非经验频率或均匀分布）：
@@ -193,9 +192,9 @@ $$p(w_i) = \frac{f(w_i)^{\frac{3}{4}}}{\sum^m_{j=0}f(w_j)^{\frac{3}{4}}}$$
 
 ## GloVe词向量
 
-GloVe（global vectors for word representation）词向量模型是另外一种计算词嵌入的方法，虽然相比下没有 skip-gram 模型用的多，但是相比这种模型却更加简单。
+GloVe（global vectors for word representation）词向量模型是另外一种计算词嵌入的方法，虽然相比下没有 Skip-Gram 模型用的多，但是相比这种模型却更加简单。
 
-Glove 模型基于语料库统计了词的共现矩阵 $X$，$X$中的元素 $X_{ij}$ 表示单词 $i$ 和单词 $j$ “为上下文-目标词对”的次数。（一般地，如果不限定上下文词一定在目标词的前面，则有对称关系 $X_{ij}=X_{ji}$ ；如果有限定先后，则$X_{ij}\neq  X_{ji}$ 。接下来的讨论中，我们默认存在对称关系 $X_{ij}=X_{ji}$ 。）。
+Glove 模型基于语料库统计了词的共现矩阵 $X$，$X$ 中的元素 $X_{ij}$ 表示单词 $i$ 和单词 $j$ “为上下文-目标词对”的次数。（一般地，如果不限定上下文词一定在目标词的前面，则有对称关系 $X_{ij}=X_{ji}$ ；如果有限定先后，则$X_{ij}\neq  X_{ji}$ 。接下来的讨论中，我们默认存在对称关系 $X_{ij}=X_{ji}$ ）。
 
 GloVe 模型的损失函数为：
 
@@ -233,7 +232,7 @@ $$e_{w}^{(final)}= \frac{e_{w} +\theta_{w}}{2}$$
 
 ![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/05-Sequence%20Models/week2/md_images/09.png)
 
-如上图所示，用词嵌入方法获得嵌入矩阵 $E$ 后，计算出句中每个单词的词向量并取平均值，输入给一个 Softmax 单元，输出预测结果 $\hat y$。
+如上图所示，用词嵌入方法获得嵌入矩阵 $E$ 后，计算出句中每个单词的词向量并取平均值，输入给一个 softmax 单元，输出预测结果 $\hat y$。
 
 这种方法的优点是适用于任何长度的文本；缺点是没有考虑词的顺序，对于包含了多个正面评价词的负面评价，很容易预测到错误结果。比如句子："Completely lacking in good taste, good service, and good ambiance."，虽然 good这个词出现了很多次，有 3 个 good，如果如上图方法一般忽略词序，仅仅把所有单词的词嵌入加起来或者平均下来，你最后的特征向量会有很多 good 的表示，你的分类器很可能认为这是一个好的评论，然而事实上这是一个差评，只有一星的评价。
 
@@ -241,7 +240,7 @@ $$e_{w}^{(final)}= \frac{e_{w} +\theta_{w}}{2}$$
 
 ![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/05-Sequence%20Models/week2/md_images/10.png)
 
-如上图所示，用词嵌入方法获得嵌入矩阵 $E$ 后，然后输入到 many-to-one 的 RNN 模型中，最后通过最后的 Softmax 分类器中，输出预测结果 $\hat y$。由于词向量是从一个大型的语料库中获得的，这种方法将保证了词的顺序的同时能够对一些词作出泛化。
+如上图所示，用词嵌入方法获得嵌入矩阵 $E$ 后，然后输入到 many-to-one 的 RNN 模型中，最后通过最后的 softmax 分类器中，输出预测结果 $\hat y$。由于词向量是从一个大型的语料库中获得的，这种方法将保证了词的顺序的同时能够对一些词作出泛化。
 
 ## 词向量除偏
 
@@ -251,31 +250,31 @@ $$e_{w}^{(final)}= \frac{e_{w} +\theta_{w}}{2}$$
 
 以性别偏见为例，我们来探讨下如何消除词嵌入中的偏见。
 
-#### 中和本身与性别无关词汇
+**中和本身与性别无关词汇** 
 
 对于“医生（doctor）”、“老师（teacher）”、“接待员（receptionist）”等本身与性别无关词汇，可以 **中和（Neutralize）** 其中的偏见。首先用“女性（woman）”的词向量减去“男性（man）”的词向量，得到的向量 $g=e_{woman}−e_{man}$ 就代表了“性别（gender）”。假设现有的词向量维数为 50，那么对某个词向量，将 50 维空间分成两个部分：与性别相关的方向 $g$ 和与 $g$ **正交** 的其他 49 个维度 $g_{\perp}$。如下左图：
 
 ![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/05-Sequence%20Models/week2/md_images/11.jpg)
 
-而除偏的步骤，是将要除偏的词向量（左图中的 $e_{receptionist}$）在向量 $g$ 方向上的值置为 0，变成右图所示的 $e^{debiased}_{receptionist}$。
+而除偏的步骤，是将要除偏的词向量（左图中的 $e_{receptionist}$）在向量 $g$ 方向上的值置为 0，变成右图所示的 $e_{receptionist}^{debiased}$。
 
 公式如下：
 
-$$e^{bias}_{component} = \frac{e · g}{||g||^2_2} × g$$
+$$e_{component}^{bias} = \frac{e · g}{||g||^2_2} × g$$
 
-$$e^{debiased}_{receptionist} = e - e^{bias}_{component}$$
+$$e_{receptionist}^{debiased} = e - e_{component}^{bias}$$
 
-#### 均衡本身与性别有关词汇
+**均衡本身与性别有关词汇** 
 
 对于“男演员（actor）”、“女演员（actress）”、“爷爷（grandfather）”等本身与性别有关词汇，中和“婴儿看护人（babysit）”中存在的性别偏见后，还是无法保证它到“女演员（actress）”与到“男演员（actor）”的距离相等。对这样一对性别有关的词，除偏的过程是 **均衡（Equalization）** 它们的性别属性。其核心思想是确保一对词（actor 和 actress）到 $g_{\perp}$ 的距离相等。
 
 ![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/05-Sequence%20Models/week2/md_images/12.jpg)
 
-对需要除偏的一对词 $w_1$、$w_2$，选定与它们相关的某个未中和偏见的单词 B$ 之后，均衡偏见的过程如下公式：
+对需要除偏的一对词 $w_1$、$w_2$，选定与它们相关的某个未中和偏见的单词 $B$ 之后，均衡偏见的过程如下公式：
 
 $$\mu = \frac{e_{w1} + e_{w2}}{2}$$
 
-$$\mu_{B} = \frac {\mu · bias\\\_axis}{||bias\_axis||_2} + ||bias\_axis||_2 · bias\_axis$$
+$$\mu_{B} = \frac {\mu · bias\\\_axis}{||bias\\\_axis||_2} + ||bias\\\_axis||_2 · bias\\\_axis$$
 
 $$\mu_{\perp} = \mu - \mu_{B}$$
 
