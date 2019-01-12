@@ -1,4 +1,4 @@
-<h1 align="center">网易-吴恩达《深度学习》课后练习编程作业和笔记</h1>
+<h1 align="center">网易云课堂微专业-Andrew Ng《深度学习》课后练习编程作业和笔记</h1>
 
 该仓库包含本课程的所有笔记内容，和课程练习，我珍惜这门课的每一节课，通过对知识的整理能够加深对知识的理解，也通过整理的内容为有需要的童鞋提供些许帮助！！
 
@@ -41,12 +41,12 @@
 * [机器学习之路](https://zhuanlan.zhihu.com/koalatree)
 * [KyonHuang-吴恩达《深度学习》系列课程笔记](http://kyonhuang.top/Andrew-Ng-Deep-Learning-notes/#/)
 
-### 备注
+## 备注
 
 - GitHub 的 README.md 文件不提供 LaTeX 公式解析，可使用 chrome 浏览器插件[GitHub with MathJax](https://chrome.google.com/webstore/detail/github-with-mathjax/ioemnmodlmafdkllaclgeombjnmnbima)
-- 由于 Github 中的文件大小限制规则，编程练习中缺少的数据集文件可以从对应文件夹里边的".gitignore"文件中得知，然后自行搜索下载。或者在下方下载完整的作业包。
+- 由于 Github 中的文件大小限制规则，编程练习中缺少的数据集文件可以从对应文件夹里边的".gitignore"文件中得知。或者在下方下载完整的作业包。
 
-### 作业包
+## 作业包
 
 神经网络与深度学习
 
@@ -70,9 +70,9 @@
 序列模型（未完待续）
 
 - [Class5-Week1-循环神经网络(RNN)](https://stu2013jnueducn-my.sharepoint.com/:f:/g/personal/hhhgggpps_stu2013_jnu_edu_cn/EjAxMUxkSWJPhChFFdNinOkBrveKcu2XrpZwtUKTfsRo1g?e=GDAXdi)
-- [Class2-Week2-自然语言处理与词嵌入](https://stu2013jnueducn-my.sharepoint.com/:f:/g/personal/hhhgggpps_stu2013_jnu_edu_cn/EpYQTM__FThClHISMeBIZ08BWePqw-7Ul8z5oTkhh3_RLA?e=IdthX7)
-- Class2-Week3-序列模型和注意力机制
+- [Class5-Week2-自然语言处理与词嵌入](https://stu2013jnueducn-my.sharepoint.com/:f:/g/personal/hhhgggpps_stu2013_jnu_edu_cn/EpYQTM__FThClHISMeBIZ08BWePqw-7Ul8z5oTkhh3_RLA?e=IdthX7)
+- Class5-Week3-序列模型和注意力机制
     
 ## License
 
-遵循 MIT 许可证。有关详细,请参阅 [LICENSE](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/blob/master/LICENSE)。
+遵循 MIT 许可证。有关详细，请参阅 [LICENSE](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/blob/master/LICENSE)。
