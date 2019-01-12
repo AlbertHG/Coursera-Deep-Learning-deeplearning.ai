@@ -26,6 +26,7 @@
     - [特殊应用：人脸识别和神经风格转换](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/tree/master/04-Convolutional%20Neural%20Networks/week4)
 - [序列模型(未完待续)](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/tree/master/05-Sequence%20Models)
     - [循环神经网络(RNN)](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/tree/master/05-Sequence%20Models/week1)
+    - [自然语言处理与词嵌入](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/tree/master/05-Sequence%20Models/week2)
 
 ## 课程地址
 
