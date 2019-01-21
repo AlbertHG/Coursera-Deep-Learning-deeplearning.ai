@@ -26,7 +26,7 @@
 - 输出： $y^{<1>}，y^{<2>}，\cdots，y^{<T_{y}>}$ ；这里每个 $y^{<t>}$ 均为对应英语句子中的每个单词；
 - 网络结构：many-to-many RNN 网络结构。
 
-![](01)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/05-Sequence%20Models/week3/md_images/01.png)
 
 相关论文：[Sutskever et al., 2014. Sequence to sequence learning with neural networks](https://arxiv.org/pdf/1409.3215.pdf)
 
@@ -34,7 +34,7 @@
 
 这种编码器-解码器的结构也可以用于图像描述（Image captioning）。将 AlexNet 作为编码器，最后一层的 Softmax 换成一个 RNN 作为解码器，网络的输出序列就是对图像的一个描述。
 
-![](02)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/05-Sequence%20Models/week3/md_images/02.png)
 
 相关论文：[Mao et. al., 2014. Deep captioning with multimodal recurrent neural networks](https://arxiv.org/pdf/1412.6632.pdf)
 
@@ -69,7 +69,7 @@ $$arg \ max_{y^{⟨1⟩}, ..., y^{⟨T_y⟩}}P(y^{⟨1⟩}, ..., y^{⟨T_y⟩} |
 
 第一步：设定一个集束宽（Beam Width）$B$，代表了解码器中每个时间步的预选单词数量。例如 $B=3$，则将第一个时间步最可能的三个预选单词及其概率值 $P(y^⟨1⟩|x)$ 保存到计算机内存。
 
-![](03)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/05-Sequence%20Models/week3/md_images/03.jpg)
 
 第二步：在第一步中得到的集束宽度的单词数作为预选词，当作第二个时间步的输入，计算其与单词表中的所有单词组成词对的概率，并与第一步的概率相乘，得到第一和第二两个词对的概率： $P(\hat y^{⟨2⟩}|x, \hat y^{⟨1⟩})$，有 $3\times 10000$ 个选择：
 
@@ -81,7 +81,7 @@ $$arg \ max \prod^{T_y}_{t=1} P(\hat y^{⟨t⟩} | x, \hat y^{⟨1⟩}, ..., \ha
 
 可以看到，当 $B=1$ 时，集束搜索就变为贪心搜索。
 
-![](04)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/05-Sequence%20Models/week3/md_images/04.png)
 
 第三步 - 第 T 步：与第二步的过程是相似的，直到遇到句尾符号结束。
 
@@ -125,7 +125,7 @@ $$arg \ max \frac{1}{T_y^{\alpha}} \sum^{T_y}_{t=1} logP(\hat y^{⟨t⟩} | x, \
 
 建立一个如下图所示的表格，记录对每一个错误的分析，有助于判断错误出现在 RNN 模型还是集束搜索算法中。如果错误出现在集束搜索算法中，可以考虑增大集束宽 B；否则，需要进一步分析，看是需要正则化、更多数据或是尝试一个不同的网络结构。
 
-![](05)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/05-Sequence%20Models/week3/md_images/05.jpg)
 
 ## Bleu得分（选修）
 
@@ -139,15 +139,15 @@ $$arg \ max \frac{1}{T_y^{\alpha}} \sum^{T_y}_{t=1} logP(\hat y^{⟨t⟩} | x, \
 
 因此，我们需要改良的精确度评估方法，我们把每一个单词的记分上限定为它在参考句子中出现的最多次数。在参考 1 中，单词 the 出现了 2 次，在参考 2 中，单词 the 只出现了 1 次。而 2 比 1 大，所以我们会说，单词the的得分上限为2。有了这个改良后的精确度，我们就说，这个输出句子的得分为2/7，
 
-![](06)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/05-Sequence%20Models/week3/md_images/06.png)
 
 上面的方法是一个词一个词进行统计，这种以一个单词为单位的集合统称为 unigram（一元组）。以 uni-gram 统计得到的精度 $p_1$ 体现了翻译的充分性，也就是逐字逐句地翻译能力。而以成对的词为单位的集合称为 bi-gram（二元组）。对每个二元组，可以统计其在机器翻译结果（count）和人工翻译结果（countclip）出现的次数，计算 Bleu 得分。
 
-![](07)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/05-Sequence%20Models/week3/md_images/07.jpg)
 
 例如对以上机器翻译结果（count）及参考翻译（countclip）以二元组统计有：
 
-![](08)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/05-Sequence%20Models/week3/md_images/08.png)
 
 以此类推，以 $n$ 个单词为单位的集合称为 n-gram（多元组），对应的 Blue（即翻译精确度）得分计算公式为：
 
@@ -183,7 +183,7 @@ Bleu 得分的贡献是提出了一个表现不错的单一实数评估指标，
 
 注意力模型中，网络的示例结构如下所示：
 
-![](09)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/05-Sequence%20Models/week3/md_images/09.jpg)
 
 底层是一个双向循环神经网络，需要处理的序列作为它的输入。该网络中每一个时间步的激活 $a^{⟨t^{′}⟩}$ 中，都包含前向传播产生的和反向传播产生的激活：
 
@@ -203,7 +203,7 @@ $$\alpha^{\langle t,t’ \rangle} = \frac{exp(e^{\langle t,t’ \rangle})}{\sum^
 
 而对于 $e^{\langle t,t’ \rangle}$，我们通过神经网络学习得到。输入为 $s^{\langle t-1 \rangle}$ 和 $a^{\langle t’ \rangle}$，如下图所示：
 
-![](10)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/05-Sequence%20Models/week3/md_images/10.png)
 
 注意力模型的一个缺点是时间复杂度为 $O(n^3)$。
 
@@ -216,7 +216,7 @@ $$\alpha^{\langle t,t’ \rangle} = \frac{exp(e^{\langle t,t’ \rangle})}{\sum^
 
 在语音识别中，要做的是将输入的一段语音 $x$ 转换为一段文字副本作为输出。
 
-![](11)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/05-Sequence%20Models/week3/md_images/11.jpg)
 
 曾经的语音识别系统都是采用人工设计出的音素（Phonemes）识别单元来构建，音素指的是一种语言中能区别两个词的最小语音单位。现在有了端对端深度学习，已经完美没有必要采用这种识别音素的方法实现语音识别。
 
@@ -224,11 +224,11 @@ $$\alpha^{\langle t,t’ \rangle} = \frac{exp(e^{\langle t,t’ \rangle})}{\sum^
 
 语音识别系统可以采用注意力模型来构建：
 
-![](12)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/05-Sequence%20Models/week3/md_images/12.jpg)
 
 用 **CTC（Connectionist Temporal Classification）** 损失函数来做语音识别的效果也不错。由于输入是音频数据，使用 RNN 所建立的系统含有很多个时间步，且输出数量往往小于输入。因此，不是每一个时间步都有对应的输出。CTC 允许 RNN 生成下图红字所示的输出，并将两个空白符（blank）中重复的字符折叠起来，再将空白符去掉，得到最终的输出文本。
 
-![](13)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/05-Sequence%20Models/week3/md_images/13.png)
 
 相关论文：[Graves et al., 2006. Connectionist Temporal Classification: Labeling unsegmented sequence data with recurrent neural networks](http://people.idsia.ch/~santiago/papers/icml2006.pdf)
 
@@ -238,4 +238,4 @@ $$\alpha^{\langle t,t’ \rangle} = \frac{exp(e^{\langle t,t’ \rangle})}{\sum^
 
 想要训练一个触发词检测系统，同样需要有大量的标记好的训练数据。使用RNN训练语音识别系统实现触发词词检测的功能时，可以进行如下图所示的工作：
 
-![](14)
+![](https://raw.githubusercontent.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/master/05-Sequence%20Models/week3/md_images/14.jpg)
