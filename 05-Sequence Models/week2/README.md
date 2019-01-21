@@ -1,4 +1,4 @@
-<h1 align="center">第五课第二周“自然语言处理与词嵌入(NLP and Word Embeddings)”</h1>
+<h1 align="center">第五课第二周“自然语言处理与词嵌入”</h1>
 
 # 笔记
 

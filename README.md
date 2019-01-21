@@ -6,7 +6,7 @@
 
 [网易云课堂](http://study.163.com/) 提供的免费正版的课程资料，给予了我极大的帮助。
 
-## [博客传送门](https://alberthg.github.io/)
+## [博客传送门](https://alberthg.github.io/tags/#deeplearning.ai)
 
 ## 笔记
 
@@ -27,7 +27,7 @@
 - [序列模型（未完待续）](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/tree/master/05-Sequence%20Models)
     - [循环神经网络(RNN)](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/tree/master/05-Sequence%20Models/week1)
     - [自然语言处理与词嵌入](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/tree/master/05-Sequence%20Models/week2)
-    - 序列模型和注意力机制
+    - [序列模型和注意力机制](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/tree/master/05-Sequence%20Models/week3)
 
 ## 课程地址
 
@@ -71,7 +71,7 @@
 
 - [Class5-Week1-循环神经网络(RNN)](https://stu2013jnueducn-my.sharepoint.com/:f:/g/personal/hhhgggpps_stu2013_jnu_edu_cn/EjAxMUxkSWJPhChFFdNinOkBrveKcu2XrpZwtUKTfsRo1g?e=GDAXdi)
 - [Class5-Week2-自然语言处理与词嵌入](https://stu2013jnueducn-my.sharepoint.com/:f:/g/personal/hhhgggpps_stu2013_jnu_edu_cn/EpYQTM__FThClHISMeBIZ08BWePqw-7Ul8z5oTkhh3_RLA?e=IdthX7)
-- Class5-Week3-序列模型和注意力机制
+- [Class5-Week3-序列模型和注意力机制](https://stu2013jnueducn-my.sharepoint.com/:f:/g/personal/hhhgggpps_stu2013_jnu_edu_cn/Eom2rvlZ1vBKg8Yoa5IqBR4BZFAIxmXHgShxcbAhTg-VMw?e=7zCCYB)
     
 ## License
 
