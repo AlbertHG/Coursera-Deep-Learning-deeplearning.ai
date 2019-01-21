@@ -24,7 +24,7 @@
     - [深度卷积网络：实例探究](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/tree/master/04-Convolutional%20Neural%20Networks/week2)
     - [目标检测](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/tree/master/04-Convolutional%20Neural%20Networks/week3)
     - [特殊应用：人脸识别和神经风格转换](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/tree/master/04-Convolutional%20Neural%20Networks/week4)
-- [序列模型（未完待续）](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/tree/master/05-Sequence%20Models)
+- [序列模型](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/tree/master/05-Sequence%20Models)
     - [循环神经网络(RNN)](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/tree/master/05-Sequence%20Models/week1)
     - [自然语言处理与词嵌入](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/tree/master/05-Sequence%20Models/week2)
     - [序列模型和注意力机制](https://github.com/AlbertHG/Coursera-Deep-Learning-deeplearning.ai/tree/master/05-Sequence%20Models/week3)
@@ -67,7 +67,7 @@
 - [Class4-Week3-目标检测](https://stu2013jnueducn-my.sharepoint.com/:f:/g/personal/hhhgggpps_stu2013_jnu_edu_cn/EgrReZ4wCcRKssRAx3QLE4gBXsH9-tUF_Y8Pms-_x235cQ?e=SwmUki)
 - [Class4-Week4-特殊应用：人脸识别和神经风格转换](https://stu2013jnueducn-my.sharepoint.com/:f:/g/personal/hhhgggpps_stu2013_jnu_edu_cn/Eocx2TcfHlhAlw15qd_GY6wBlu38O7-xIgNNv4Eh3ooU7A?e=yY2okb)
 
-序列模型（未完待续）
+序列模型 
 
 - [Class5-Week1-循环神经网络(RNN)](https://stu2013jnueducn-my.sharepoint.com/:f:/g/personal/hhhgggpps_stu2013_jnu_edu_cn/EjAxMUxkSWJPhChFFdNinOkBrveKcu2XrpZwtUKTfsRo1g?e=GDAXdi)
 - [Class5-Week2-自然语言处理与词嵌入](https://stu2013jnueducn-my.sharepoint.com/:f:/g/personal/hhhgggpps_stu2013_jnu_edu_cn/EpYQTM__FThClHISMeBIZ08BWePqw-7Ul8z5oTkhh3_RLA?e=IdthX7)
